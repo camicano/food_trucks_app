@@ -1,4 +1,7 @@
 class TrucksController < ApplicationController
-def index
-end
+	require 'open-uri'
+
+	def index
+		@trucks = Truck.all
+	end
 end

@@ -17,6 +17,6 @@ development:
   encoding: unicode
   database: food_truck_app_development
   pool: 5
-  username: Jeivar
+  username: camilacano
   host: localhost
 
