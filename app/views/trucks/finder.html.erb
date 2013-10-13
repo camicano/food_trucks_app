@@ -1,0 +1,30 @@
+<html>
+<head>
+<script type="text/javascript" src="http://127.0.0.1:8910/GAW.js">
+</script>
+<script>
+function showMap(position) {
+      window.alert(position.coords.latitude + ", " + position.coords.longitude);
+}
+
+function load(){ 
+   if (!navigator.geolocation){
+                if (window.confirm("Geolocation API not avaiable and mobile-gps-web-gate not installed. Would You like to install mobile-gps-web-gate on Your device (it requires MIDP 2.0)?")){
+                        window.alert('After install please reload this page');
+                        window.location.href = 'http://kantyka.com/mobile-gps-web-gate/mobile-gps-web-gate.jad';
+                } else {
+                        window.alert('Location not avaiable');
+                }
+        } else {
+                navigator.geolocation.getCurrentPosition(showMap);
+        }
+}
+
+</script>
+</head>
+<body onload="load()">
+
+
+    <h1>Finder -> Retrieve GPS location from browser</h1>
+</body>
+</html>
