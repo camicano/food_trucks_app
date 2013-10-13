@@ -2,6 +2,6 @@ class TrucksController < ApplicationController
 	require 'open-uri'
 
 	def index
-		@trucks = Truck.all
+		@response = Truck.all
 	end
 end
