@@ -13,8 +13,6 @@ gem 'httparty'
 
 gem 'json'
 
-gem 'factory_girl'
-
 gem 'faker'
 # Gems used only for assets and not required
 # in production environments by default.

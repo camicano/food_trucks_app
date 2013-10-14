@@ -7,11 +7,9 @@ describe User do
 		@user.password = Faker::Internet.password
 	end
 
-  it "is invalid without an email" do
-  	expect(@user.email).to be_true
-  end
+  it { expect(@user.email).to be_true }
   it { should have_many(:trucks) }
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:password) }
 end
- 
+  
