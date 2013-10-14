@@ -17,7 +17,7 @@ development:
   encoding: unicode
   database: food_truck_app_development
   pool: 5
-  username: camilacano
+  username: Jeivar
   host: localhost
 
 test:
@@ -25,6 +25,6 @@ test:
   encoding: unicode
   database: food_truck_app_test
   pool: 5
-  username: camilacano
+  username: Jeivar
   host: localhost
 
