@@ -29,6 +29,9 @@ gem 'jquery-rails'
 
 gem 'mapbox-rails'
 
+group :test, :development do
+  gem "rspec-rails", "~> 2.4"
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
