@@ -48,7 +48,7 @@ var marker = new google.maps.Marker({
 
 
 
-$(document).ready(function(){
+window.onload = function(){
 	geoFindMe();
     // google.maps.event.addDomListener(window, 'load', initialize);
-});
+};
