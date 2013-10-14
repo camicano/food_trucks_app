@@ -50,9 +50,19 @@ function setMarkers(trucks) {
   $.each(trucks, function(index, truck){
     console.log(truck.latitude);
   	var location = new google.maps.LatLng(truck.latitude, truck.longitude);
+    var image = {
+    url: './app/assets/images/truck.png',
+    // This marker is 20 pixels wide by 32 pixels tall.
+    size: new google.maps.Size(20, 32),
+    // The origin for this image is 0,0.
+    origin: new google.maps.Point(0,0),
+    // The anchor for this image is the base of the flagpole at 0,32.
+    anchor: new google.maps.Point(0, 32)
+    };
  	  var marker = new google.maps.Marker({
         position: location,
         map: map,
+        image: image,
         title: truck.name
     }); 
   });
