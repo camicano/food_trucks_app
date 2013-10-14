@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '1.9.3'
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
@@ -10,6 +10,8 @@ gem 'pg'
 gem 'devise'
 
 gem 'httparty'
+
+gem 'json'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,6 +26,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+gem 'mapbox-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
