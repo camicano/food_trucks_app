@@ -52,3 +52,13 @@ window.onload = function(){
 	geoFindMe();
     // google.maps.event.addDomListener(window, 'load', initialize);
 };
+
+
+
+// Add trucks as markers to map -> function addmarker
+function addMarker(location) {
+        marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+    }
