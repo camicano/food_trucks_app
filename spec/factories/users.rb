@@ -3,13 +3,8 @@ require 'faker'
 
 describe User do
 	before do 
-		@user = User.new(:email => true)
+		@user = User.new
+		@user.email = Faker::Internet.email
+	end
 	end
 
-
-# FactoryGirl.define do 
-# 	factory :user do |f|
-# 		f.email { Faker::Internet.email }
-# 		f.password "password"
-# 	end
-end
