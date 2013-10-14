@@ -20,3 +20,11 @@ development:
   username: camilacano
   host: localhost
 
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: food_truck_app_test
+  pool: 5
+  username: camilacano
+  host: localhost
+
