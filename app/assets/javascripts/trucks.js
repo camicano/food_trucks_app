@@ -1,5 +1,4 @@
-var latitude,
-	longitude,
+var trucks,
 	myLatlng,
 	map;
 
@@ -35,30 +34,26 @@ function initialize() {
         zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-map = new google.maps.Map(document.getElementById("map-canvas"),
+	map = new google.maps.Map(document.getElementById("map-canvas"),
     mapOptions);
 
-var marker = new google.maps.Marker({
+	var mainmarker = new google.maps.Marker({
     position: myLatlng,
     map: map,
     title:"Hello World!"
-});
-
+	});
+	// setMarkers(map, trucks);
 }
 
-
-
-window.onload = function(){
+$(function(){
 	geoFindMe();
+	
+	var trucks = $.ajax({
+		url: '/',
+		method: 'GET',
+		dataType: 'json'
+	}).done(function(data){
+		console.log(data);
+	});
     // google.maps.event.addDomListener(window, 'load', initialize);
-};
-
-
-
-// Add trucks as markers to map -> function addmarker
-function addMarker(location) {
-        marker = new google.maps.Marker({
-            position: location,
-            map: map
-        });
-    }
+});
