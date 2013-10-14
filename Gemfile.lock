@@ -50,6 +50,8 @@ GEM
     execjs (2.0.2)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
+    faker (1.2.0)
+      i18n (~> 0.5)
     hike (1.2.3)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -137,6 +139,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   factory_girl
+  faker
   httparty
   jquery-rails
   json
