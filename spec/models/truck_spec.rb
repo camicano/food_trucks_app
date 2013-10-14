@@ -8,11 +8,9 @@ describe Truck do
 	@truck.longitude = Faker::Address.longitude
   end 
 
-  it "is invalid without a name" do
-  	expect(@truck.name).to be_true
-  end
-  it { should belong_to(:foods) }
+  it { should have_and_belong_to_many(:foods) }
   it { should belong_to(:user) }
+  it { should validate_presence_of(:name) }
   it { should validate_presence_of(:latitude) }
   it { should validate_presence_of(:longitude) }
     
