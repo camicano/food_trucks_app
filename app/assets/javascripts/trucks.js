@@ -32,7 +32,7 @@ function geoFindMe() {
 function initialize() {
     var mapOptions = {
         center: myLatlng,
-        zoom: 8,
+        zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 map = new google.maps.Map(document.getElementById("map-canvas"),
@@ -48,7 +48,7 @@ var marker = new google.maps.Marker({
 
 
 
-$(document).ready(function(){
+window.onload = function(){
 	geoFindMe();
     // google.maps.event.addDomListener(window, 'load', initialize);
-});
+};

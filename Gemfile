@@ -28,8 +28,6 @@ end
 
 gem 'jquery-rails'
 
-gem 'mapbox-rails'
-
 group :test do
   gem "rspec-rails", "~> 2.4"
   gem 'shoulda-matchers'
