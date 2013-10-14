@@ -42,8 +42,19 @@ function initialize() {
     map: map,
     title:"Hello World!"
 	});
-	// setMarkers(map, trucks);
 }
+
+function setMarkers(map, trucks) {
+  $.each(trucks, function(truck){
+  	console.log(truck);
+  	var Latlng = new google.maps.LatLng(truck.latitude, truck.longitude);
+ 	var marker = new google.maps.Marker({
+        position: Latlng,
+        title: truck.name
+    }); 
+  });
+}
+
 
 $(function(){
 	geoFindMe();
@@ -53,7 +64,7 @@ $(function(){
 		method: 'GET',
 		dataType: 'json'
 	}).done(function(data){
-		console.log(data);
+		setMarkers(map, data);
 	});
     // google.maps.event.addDomListener(window, 'load', initialize);
 });
