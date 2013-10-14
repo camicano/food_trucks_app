@@ -14,7 +14,7 @@ $(document).ready(function(){
 	var marker = L.mapbox.markerLayer();
 
 	$.ajax({
-   		url: '/',
+   	url: '/',
 		type: 'GET',
 		dataType: 'json',
 	}).done(function(data){
