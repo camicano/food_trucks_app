@@ -1,4 +1,5 @@
-var trucks,
+var json, 
+  trucks,
 	myLatlng,
 	map;
 
@@ -42,14 +43,16 @@ function initialize() {
     map: map,
     title:"Hello World!"
 	});
+  setMarkers(json);
 }
 
-function setMarkers(map, trucks) {
-  $.each(trucks, function(truck){
-  	console.log(truck);
-  	var Latlng = new google.maps.LatLng(truck.latitude, truck.longitude);
- 	var marker = new google.maps.Marker({
-        position: Latlng,
+function setMarkers(trucks) {
+  $.each(trucks, function(index, truck){
+    console.log(truck.latitude);
+  	var location = new google.maps.LatLng(truck.latitude, truck.longitude);
+ 	  var marker = new google.maps.Marker({
+        position: location,
+        map: map,
         title: truck.name
     }); 
   });
@@ -57,14 +60,15 @@ function setMarkers(map, trucks) {
 
 
 $(function(){
-	geoFindMe();
+	
 	
 	var trucks = $.ajax({
 		url: '/',
 		method: 'GET',
 		dataType: 'json'
 	}).done(function(data){
-		setMarkers(map, data);
+    geoFindMe();
+		json = data;
 	});
     // google.maps.event.addDomListener(window, 'load', initialize);
 });
