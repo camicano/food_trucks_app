@@ -9,4 +9,12 @@ class TrucksController < ApplicationController
 			format.json {render :json => @response.to_json}
 		end	
 	end
+
+	def filter
+		@response = Food.all 
+
+		respond_to do |format|
+			format.json {render :json => @response.to_json}
+		end	
+	end
 end
