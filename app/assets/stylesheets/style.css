@@ -1,5 +1,5 @@
 body {
-	background-color: #E5580E;
+	background-color: rgba(0,0,0,0.8);
 }
 
 #map {
@@ -7,9 +7,23 @@ body {
 }
 
 #map-canvas {
-    height: 600px;
+    height: 400px;
     width: 100%;
-    background-color: #555;
+    background-color: rgba(0,0,0,0.2);
     margin: 0px;
     padding: 0px
 }
+
+/*topmenu*/
+
+/*#navbar {
+	background-color: rgba(0,0,0,0.7);
+	font-size: 14px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 25px;
+	z-index: 1;
+}
+*/

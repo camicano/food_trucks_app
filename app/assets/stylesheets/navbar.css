@@ -1,0 +1,35 @@
+.aside {
+  background-color: #ffffff;
+  bottom: 30px;
+  opacity: 0.5;
+  filter: alpha(opacity=40);
+  position: fixed;
+  right: -150px;
+  top: 30px;
+  width: 200px;
+  z-index: 1000;
+
+  -webkit-border-radius: 15px 0px 0px 15px;
+  border-radius: 15px 0px 0px 15px;
+
+  -webkit-box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, .3);
+  box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, .3);
+}
+
+.top {
+  background-color: #ffffff;
+  bottom: 30px;
+  opacity: 0.5;
+  filter: alpha(opacity=40);
+  position: fixed;
+  right: -150px;
+  top: 30px;
+  width: 200px;
+  z-index: 1000;
+
+  -webkit-border-radius: 15px 0px 0px 15px;
+  border-radius: 15px 0px 0px 15px;
+
+  -webkit-box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, .3);
+  box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, .3);
+}

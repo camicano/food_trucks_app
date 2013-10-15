@@ -80,4 +80,6 @@ $(function(){
 		json = data;
 	});
     // google.maps.event.addDomListener(window, 'load', initialize);
+
+    // Adding hover text
 });
