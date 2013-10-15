@@ -1,17 +1,14 @@
 body {
-<<<<<<< HEAD
-	background-color: rgba(0,0,0,0.8);
-=======
-	background-color: #c4630f;
-	color: #fff;
-	font-family: 'Quicksand', sans-serif;
+	background-color: #383838;
+	color: #ccc;
+	/*font-family: 'Quicksand', sans-serif;*/
 }
 
-#title {
+/*#title {
 	padding: 0px;
-	height: 100px;
-	background-color: #000;
->>>>>>> ad6e2a9af80fa184e13b7dca517291dd0c3c8eb3
+	height: 120px;
+*/
+	/*background-color: #000;*/
 }
 
 #map {
@@ -21,7 +18,7 @@ body {
 #map-canvas {
     height: 450px;
     width: 100%;
-    background-color: rgba(0,0,0,0.2);
+    background-color: black;
     margin: 0px;
     padding: 0px
 }
