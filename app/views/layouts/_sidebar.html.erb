@@ -1,0 +1,44 @@
+<div>
+	<div class="aside" id="side-menu">
+		<div id="cssmenu">
+			<ul>
+				<li><%= link_to "ALL TRUCKS", root_path %></li>
+			</ul>
+			<ul>
+				<li><%= link_to "FILTER TRUCKS", root_path %></li>
+			</ul>
+				<% if user_signed_in? %>
+				<ul>
+ 					<li><%= link_to "home", root_path %></li>
+    			</ul>
+    			<ul>
+    				<li><%= link_to "sign out", destroy_user_session_path, method: :delete %></li>
+				</ul>
+				<% else %>
+				<ul>
+ 	 				<li><%= link_to "sign up", new_user_registration_path %></li>
+ 				</ul>
+ 				<ul>
+ 					<li><%= link_to "sign_in", new_user_session_path %></li>
+				</ul>
+				<% end %>
+		</div>
+	</div>
+</div>
+
+<!--    new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
+            user_session POST   /users/sign_in(.:format)       devise/sessions#create
+    destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy
+           user_password POST   /users/password(.:format)      devise/passwords#create
+       new_user_password GET    /users/password/new(.:format)  devise/passwords#new
+      edit_user_password GET    /users/password/edit(.:format) devise/passwords#edit
+                         PUT    /users/password(.:format)      devise/passwords#update
+cancel_user_registration GET    /users/cancel(.:format)        devise/registrations#cancel
+       user_registration POST   /users(.:format)               devise/registrations#create
+   new_user_registration GET    /users/sign_up(.:format)       devise/registrations#new
+  edit_user_registration GET    /users/edit(.:format)          devise/registrations#edit
+                         PUT    /users(.:format)               devise/registrations#update
+                         DELETE /users(.:format)               devise/registrations#destroy
+           trucks_finder GET    /trucks/finder(.:format)       trucks#finder
+                  trucks GET    /trucks(.:format)              trucks#index
+                    root        /                              trucks#index -->
