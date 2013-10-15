@@ -1,4 +1,5 @@
-var trucks,
+var json, 
+  trucks,
 	myLatlng,
 	map;
 
@@ -37,23 +38,58 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById("map-canvas"),
     mapOptions);
 
-	var mainmarker = new google.maps.Marker({
-    position: myLatlng,
-    map: map,
-    title:"Hello World!"
-	});
-	// setMarkers(map, trucks);
+	// var mainmarker = new google.maps.Marker({
+ //    position: myLatlng,
+ //    map: map,
+ //    title:"Hello World!"
+	// });
+  circle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      map: map,
+      center: myLatlng,
+      radius: 1000
+    });
+  setMarkers(json);
 }
 
+function setMarkers(trucks) {
+  $.each(trucks, function(index, truck){
+    console.log(truck.latitude);
+  	var location = new google.maps.LatLng(truck.latitude, truck.longitude);
+    // var image = {
+    // url: '/app/assets/images/truck.png',
+    // // This marker is 20 pixels wide by 32 pixels tall.
+    // size: new google.maps.Size(20, 32),
+    // // The origin for this image is 0,0.
+    // origin: new google.maps.Point(0,0),
+    // // The anchor for this image is the base of the flagpole at 0,32.
+    // anchor: new google.maps.Point(0, 32)
+    // };
+ 	  var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        // icon: image,
+        title: truck.name
+    }); 
+  });
+}
+
+ var populationOptions = 
+
 $(function(){
-	geoFindMe();
+	
 	
 	var trucks = $.ajax({
 		url: '/',
 		method: 'GET',
 		dataType: 'json'
 	}).done(function(data){
-		console.log(data);
+    geoFindMe();
+		json = data;
 	});
     // google.maps.event.addDomListener(window, 'load', initialize);
 });
