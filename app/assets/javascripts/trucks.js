@@ -93,8 +93,6 @@ function setMarkers(trucks) {
   });
 }
 
- var populationOptions = 
-
 $(function(){
 	
 	
