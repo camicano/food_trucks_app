@@ -13,9 +13,9 @@ gem 'httparty'
 
 gem 'json'
 
-gem 'factory_girl'
-
 gem 'faker'
+
+gem "font-awesome-rails"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -29,8 +29,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-gem 'mapbox-rails'
 
 group :test do
   gem "rspec-rails", "~> 2.4"

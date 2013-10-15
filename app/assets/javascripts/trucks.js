@@ -1,26 +1,110 @@
-var data;
+var json, 
+  trucks,
+	myLatlng,
+	map;
 
-function listNames(data){
-	data = data;
+function geoFindMe() {
+  var output = document.getElementById("out");
 
-	// $.each(data, function(truck){
-	// 	console.log(truck);
-	// 	$('#names').append("<p>" + truck.name + "</p>");
-	// });
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+  function success(position) {
+    latitude  = position.coords.latitude;
+    longitude = position.coords.longitude;
+    initialize(latitude, longitude);
+    output.innerHTML = "<p>Located</p>";
+    myLatlng = new google.maps.LatLng(latitude,longitude);
+    initialize();
+  };
+
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  };
+
+  output.innerHTML = "<p>Locating…</p>";
+
+  navigator.geolocation.getCurrentPosition(success, error);
 }
 
-$(document).ready(function(){
-	var map = L.mapbox.map('map', 'camicano.map-iyrwvy16');
-	var marker = L.mapbox.markerLayer();
+function initialize() {
+  var styles = [
+    {
+      stylers: [
+      { hue: "#00D5FF" },
+      { saturation: -100 },
+      { lightness: -50 }
+    ]
+    },{
+      featureType: "water",
+      elementType: "geometry.fill",
+      stylers: [
+        { hue: "#00aaff" },
+        { saturation: -27 },
+        { visibility: "simplified" }
+      ]
+    },{
+      featureType: "road",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }
+  ];
 
-	$.ajax({
-   	url: '/',
-		type: 'GET',
-		dataType: 'json',
+    var mapOptions = {
+        center: myLatlng,
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+	map = new google.maps.Map(document.getElementById("map-canvas"),
+    mapOptions);
+
+  map.setOptions({styles: styles}); 
+
+  circle = new google.maps.Circle({
+      strokeColor: '#c4630f',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#c4630f',
+      fillOpacity: 0.35,
+      map: map,
+      center: myLatlng,
+      radius: 1000
+    });
+  setMarkers(json);
+}
+
+function setMarkers(trucks) {
+  $.each(trucks, function(index, truck){
+  	var location = new google.maps.LatLng(truck.latitude, truck.longitude);
+    var icon = {
+      url: '/assets/truck.png'
+    };
+ 	  var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        icon: icon,
+        title: truck.name
+    }); 
+  });
+}
+
+ var populationOptions = 
+
+$(function(){
+	
+	
+	var trucks = $.ajax({
+		url: '/',
+		method: 'GET',
+		dataType: 'json'
 	}).done(function(data){
-		console.log(data);
-		$.each(data, function(index, truck){
-			$('#names').append("<p>" + truck.name + "</p>");
-		})
+    geoFindMe();
+		json = data;
 	});
+    // google.maps.event.addDomListener(window, 'load', initialize);
 });

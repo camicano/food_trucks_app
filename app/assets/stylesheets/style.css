@@ -1,5 +1,13 @@
 body {
-	background-color: #E5580E;
+	background-color: #c4630f;
+	color: #fff;
+	font-family: 'Quicksand', sans-serif;
+}
+
+#title {
+	padding: 0px;
+	height: 100px;
+	background-color: #000;
 }
 
 #map {
