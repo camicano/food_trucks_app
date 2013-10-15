@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131015191136) do
+ActiveRecord::Schema.define(:version => 20131015195513) do
 
   create_table "foods", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -26,9 +26,6 @@ ActiveRecord::Schema.define(:version => 20131015191136) do
 
   create_table "trucks", :force => true do |t|
     t.string   "name"
-    t.string   "tweet1"
-    t.string   "tweet2"
-    t.string   "tweet3"
     t.integer  "user_id"
     t.string   "photo_url"
     t.datetime "created_at", :null => false
@@ -36,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20131015191136) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "foursq_id"
+    t.string   "twitter"
+  end
+
+  create_table "tweets", :force => true do |t|
+    t.integer  "truck_id"
+    t.text     "post"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
