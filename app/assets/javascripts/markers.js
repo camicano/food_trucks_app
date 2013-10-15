@@ -1,9 +1,0 @@
-$(function(){
-  $(".marker-menu").click(function(){
-    $(this).find(".hover-truck").fadeIn();
-    },
-    function(){
-      $(this).find(".hover-truck").fadeOut();
-      }
-    );        
-});
