@@ -54,7 +54,7 @@
 }
 #cssmenu li > a:hover,
 #cssmenu ul li:hover > a {
-  background: #2580a2 url('hover.png') bottom center no-repeat;
+  background: #2580a2 bottom center no-repeat;
   color: #FFFFFF;
   text-decoration: none;
 }
