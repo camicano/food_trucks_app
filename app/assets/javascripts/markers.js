@@ -1,5 +1,5 @@
 $(function(){
-  $(".marker-menu").hover(function(){
+  $(".marker-menu").click(function(){
     $(this).find(".hover-truck").fadeIn();
     },
     function(){
