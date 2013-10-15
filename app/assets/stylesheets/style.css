@@ -1,5 +1,17 @@
 body {
+<<<<<<< HEAD
 	background-color: rgba(0,0,0,0.8);
+=======
+	background-color: #c4630f;
+	color: #fff;
+	font-family: 'Quicksand', sans-serif;
+}
+
+#title {
+	padding: 0px;
+	height: 100px;
+	background-color: #000;
+>>>>>>> ad6e2a9af80fa184e13b7dca517291dd0c3c8eb3
 }
 
 #map {

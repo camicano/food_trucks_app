@@ -30,19 +30,46 @@ function geoFindMe() {
 }
 
 function initialize() {
+  var styles = [
+    {
+      stylers: [
+      { hue: "#00D5FF" },
+      { saturation: -100 },
+      { lightness: -50 }
+    ]
+    },{
+      featureType: "water",
+      elementType: "geometry.fill",
+      stylers: [
+        { hue: "#00aaff" },
+        { saturation: -27 },
+        { visibility: "simplified" }
+      ]
+    },{
+      featureType: "road",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }
+  ];
+
     var mapOptions = {
         center: myLatlng,
         zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+
 	map = new google.maps.Map(document.getElementById("map-canvas"),
     mapOptions);
 
+  map.setOptions({styles: styles}); 
+
   circle = new google.maps.Circle({
-      strokeColor: '#555',
+      strokeColor: '#c4630f',
       strokeOpacity: 0.8,
       strokeWeight: 2,
-      fillColor: '#555',
+      fillColor: '#c4630f',
       fillOpacity: 0.35,
       map: map,
       center: myLatlng,
