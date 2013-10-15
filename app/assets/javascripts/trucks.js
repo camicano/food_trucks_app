@@ -67,10 +67,10 @@ function initialize() {
 
   circle = new google.maps.Circle({
       strokeColor: '#c4630f',
-      strokeOpacity: 0.8,
+      strokeOpacity: 0.7,
       strokeWeight: 2,
       fillColor: '#c4630f',
-      fillOpacity: 0.35,
+      fillOpacity: 0.3,
       map: map,
       center: myLatlng,
       radius: 1000
@@ -90,14 +90,22 @@ function setMarkers(trucks) {
         icon: icon,
         title: truck.name
     }); 
+
+    // This adds a bubble on top of each marker
+    var contentString = truck.title;
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+
+    google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+
+  });
   });
 }
 
- var populationOptions = 
-
 $(function(){
-	
-	
+
 	var trucks = $.ajax({
 		url: '/',
 		method: 'GET',
@@ -106,5 +114,8 @@ $(function(){
     geoFindMe();
 		json = data;
 	});
-    // google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', initialize);
+
 });
+
+  
