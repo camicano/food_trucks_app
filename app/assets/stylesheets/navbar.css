@@ -49,6 +49,9 @@
 #cssmenu > ul > li > a {
   color: #cccccc;
 }
+#cssmenu > ul > li {
+  color: yellow;
+}
 #cssmenu ul ul a {
   color: #cccccc;
 }

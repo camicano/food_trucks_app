@@ -15,6 +15,7 @@ hash = json.parsed_response
 response = hash['response']['groups'][0]['items']
 
 response.each do |truck|
+	twitter = truck['contact']['twitter']
 	name = truck['name']
 	id = truck['id']
 	lat = truck['location']['lat']

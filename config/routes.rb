@@ -2,6 +2,6 @@ FoodTruckApp::Application.routes.draw do
 	devise_for :users
 
 	get '/trucks', :to => 'trucks#index'
-	get '/trucks/filter', :to => 'trucks#filter'
+	get '/foods', :to => 'foods#index'
 	root :to => 'trucks#index'
 end

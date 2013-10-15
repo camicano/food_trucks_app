@@ -1,28 +1,3 @@
-var json;
-
-$(document).ready(function() {
-
-  // $('#side-menu').on('click', function() {
-  //   var $this = $(this);
-  //   if($this.hasClass('active')) {
-  //     animateMenuOut();
-  //   } else {
-  //     animateMenuIn();
-  //   }
-  // });
-
-  $('#side-menu').hover(function() {
-    animateMenuIn();
-  }, function() {
-    animateMenuOut();
-  });
-
-  $('#filter-trucks').hover(function(){
-    appendFilterIn();
-  });
-
-});
-
 var animation_duration = 500;
 
 function animateMenuIn() {
@@ -44,19 +19,28 @@ function animateMenuOut() {
   $side_menu.removeClass('active');
 }
 
-function appendFilterIn() {
-  console.log("camila");
-  // var filterInfo = $.ajax(function (){
-  //   url: '/trucks/filter',
-  //   method: 'GET',
-  //   dataType: 'json'
-  //   }).done(function(data){
-  //     json = data;
-  //     console.log(json);
-  // });
-  // $filter = $('#filter-trucks');
-  // $filter.append("<li>" +  + "</li>")
-}
+$(document).ready(function() {
+
+  $('#side-menu').hover(function() {
+    animateMenuIn();
+  }, function() {
+    animateMenuOut();
+  });
+
+  $('#filter_trucks').on('click', function(e){
+    e.preventDefault();
+    $.ajax({
+      url: '/foods.json',
+      method: 'GET',
+      dataType: 'json'
+    }).done(function(data){
+      $.each(data, function(index, food){
+        $('#filter_items').append("<li>" + food.type_food + "</li>");    
+      });
+    });
+  });
+});
+
 
 
 

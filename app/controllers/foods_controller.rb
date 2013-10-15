@@ -1,8 +1,6 @@
-class TrucksController < ApplicationController
-	require 'open-uri'
-
+class FoodsController < ApplicationController
 	def index
-		@response = Truck.all
+		@response = Food.all 
 
 		respond_to do |format|
 			format.html

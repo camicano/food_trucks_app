@@ -110,7 +110,7 @@ $(function(){
   }).done(function(data){
     json = data;
     geoFindMe();
-  });
+  }); 
 
   // google.maps.event.addDomListener(window, 'load', initialize);
 });
