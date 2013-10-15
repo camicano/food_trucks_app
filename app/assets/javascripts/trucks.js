@@ -1,4 +1,4 @@
-var json, 
+var json,
   trucks,
 	myLatlng,
 	map;
