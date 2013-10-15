@@ -10,14 +10,25 @@
 </head>
 
 <body id="body">
-	
 	<div class="container">
-		<div class="aside" id="side-menu"></div>
-		<div class="top" id="top-menu"></div>
-		
-		
-		<%= yield %>
+		<div class="aside" id="side-menu">
+			<div id="cssmenu">
+				<ul>
+					<li class='link'><a href='#'>FILTER</a></li>
+				</ul>
+				<ul>
+					<li class='link'><a href='#'>LOAD ALL</a></li>
+					</ul>
+				<ul>
+					<li class="link"><a href='#'>MY PROFILE</a></li>
+					</ul>
+				<ul>
+					<li class="link"><a href='#'>DEVISE</a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
+	
+		<%= yield %>
 </body>
-</html>
- 
+</html>  
