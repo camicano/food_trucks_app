@@ -1,14 +1,6 @@
 var json;
 
 $(document).ready(function() {
-  // var filterInfo = $.ajax(function (){
-  //   url: '/trucks/filter',
-  //   method: 'GET',
-  //   dataType: 'json'
-  //   }).done(function(data){
-  //     json = data;
-  //     console.log(json);
-  // });
 
   // $('#side-menu').on('click', function() {
   //   var $this = $(this);
@@ -52,10 +44,19 @@ function animateMenuOut() {
   $side_menu.removeClass('active');
 }
 
-// function appendFilterIn() {
-//   $filter = $('#filter-trucks');
-//   $filter.append("<li>" +  + "</li>")
-// }
+function appendFilterIn() {
+  console.log("camila");
+  // var filterInfo = $.ajax(function (){
+  //   url: '/trucks/filter',
+  //   method: 'GET',
+  //   dataType: 'json'
+  //   }).done(function(data){
+  //     json = data;
+  //     console.log(json);
+  // });
+  // $filter = $('#filter-trucks');
+  // $filter.append("<li>" +  + "</li>")
+}
 
 
 
