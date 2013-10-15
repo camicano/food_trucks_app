@@ -37,7 +37,7 @@
   padding: 0px;
 }
 #cssmenu li a {
-  background: #333333 url('seperator.png') bottom right no-repeat;
+  background: #333333 bottom right no-repeat;
   display: block;
   font-weight: normal;
   line-height: 35px;

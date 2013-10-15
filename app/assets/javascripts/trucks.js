@@ -84,23 +84,21 @@ function setMarkers(trucks) {
     var icon = {
       url: '/assets/truck.png'
     };
+
+    var infoWindow = new google.maps.InfoWindow({
+      content: truck.name
+    });
+
  	  var marker = new google.maps.Marker({
         position: location,
         map: map,
         icon: icon,
         title: truck.name
-    }); 
-
-    // This adds a bubble on top of each marker
-    var contentString = truck.title;
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-  });
+    });
 
     google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
-
-  });
+      infoWindow.open(map,marker);
+    });
   });
 }
 
