@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20131015195513) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "foursq_id"
+    t.string   "tweets"
     t.string   "twitter"
   end
 

@@ -150,10 +150,15 @@ $(function(){
     geoFindMe();
   }); 
 
-    $('#side-menu').hover(function() {
+  $('#side-menu').hover(function() {
     animateMenuIn();
   }, function() {
     animateMenuOut();
+  });
+
+  $('#all_trucks').on('click', function() {
+    clearMarkers();
+    setMarkers(json);
   });
 
   $('#filter_trucks').on('click', function(e){
@@ -180,7 +185,7 @@ $(function(){
           clearMarkers();
           setMarkers(data);
         });
-      });   
+      }); 
     });
   });
   // google.maps.event.addDomListener(window, 'load', initialize);
