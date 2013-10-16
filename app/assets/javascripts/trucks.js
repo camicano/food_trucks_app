@@ -1,7 +1,8 @@
 var json,
   trucks,
   myLatlng,
-  map;
+  map,
+  infobox;
 
 var markers = [];
 
@@ -69,16 +70,32 @@ function initialize() {
 
   circle = new google.maps.Circle({
     strokeColor: '#c4630f',
-    strokeOpacity: 0.7,
+    strokeOpacity: 0.6,
     strokeWeight: 2,
     fillColor: '#c4630f',
-    fillOpacity: 0.3,
+    fillOpacity: 0.2,
     map: map,
     center: myLatlng,
-    radius: 1000
+    radius: 500
   });
 
   setMarkers(json);
+
+  // infobox = new google.maps.InfoBox({
+  //   content: document.getElementById("infobox"),
+  //   diasbleAutoPan: false,
+  //   madWidth: 150,
+  //   pixelOffset: new google.maps.Size(-140,0),
+  //   zIndex: null,
+  //   boxStyle: {
+  //     background: "url('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/examples/tipbox.gif') no-repeat",
+  //     opacity: 0.7,
+  //     width: "280px"
+  //   },
+  //   closeBoxMargin: "12px 4px 2px 2px",
+  //   closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
+  //   infoBoxClearance: new google.maps.Size(1,1)
+  // });
 }
 
 function setMarkers(json) {
@@ -98,13 +115,14 @@ function setMarkers(json) {
     markers.push(marker);
 
     var infoWindow = new google.maps.InfoWindow({
-      content: truck.name
+    
       
     });
 
     google.maps.event.addListener(marker, 'click', function() {
-      infoWindow.setContent(truck.name)
-      infoWindow.open(map, marker);
+      infobox.open(map, this);
+      map.panTo(myLatlng);
+      // infoWindow.open(map, marker);
     });
   });
 }

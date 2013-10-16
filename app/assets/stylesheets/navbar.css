@@ -81,7 +81,7 @@ background: #2580a2 bottom center no-repeat;
   text-decoration: none;
 
 }
-#cssmeny > ul > li > ul:hover {
+#cssmenu > ul > li > ul:hover {
   /*color: #cccccc;*/
   background: #2580a2 bottom center no-repeat;
   text-align: center;
