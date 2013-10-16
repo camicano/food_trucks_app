@@ -5,7 +5,7 @@
   filter: alpha(opacity=40);
   position: fixed;
   right: -150px;
-  top: 80px;
+  top: 60px;
   width: 200px;
   z-index: 1000;
   -webkit-border-radius: 3px 0px 0px 3px;
@@ -14,14 +14,14 @@
   box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, .3);*/
 }
 
-.filter_item {
+/*.filter_items {
   cursor: pointer;
-}
+}*/
 
 .filter_item:hover {
-background-color: #555;
-}
 
+background: #2580a2 bottom center no-repeat;
+}
 #cssmenu {
   border: none;
   border: 0px;
@@ -43,6 +43,7 @@ background-color: #555;
 #cssmenu li {
   /*float: left;*/
   padding: 0px;
+
 }
 #cssmenu li a {
   background: #333333 bottom right no-repeat;
@@ -57,9 +58,36 @@ background-color: #555;
 #cssmenu > ul > li > a {
   color: #cccccc;
 }
+
+/*FILTER TAB*/
 #cssmenu > ul > li {
-  color: yellow;
+  color: #cccccc;
+  text-align: center;
+  text-decoration: none;
+  font-weight: normal;
+
+
+
+  /*background: #333333;*/
+  height: 35px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+#cssmenu > ul > li:hover {
+  color: #cccccc;
+  /*background: #2580a2 bottom center no-repeat;*/
+  text-align: center;
+  text-decoration: none;
+
+}
+#cssmeny > ul > li > ul:hover {
+  /*color: #cccccc;*/
+  background: #2580a2 bottom center no-repeat;
+  text-align: center;
+  text-decoration: none;
+}
+/*END FILTER TAB*/
 #cssmenu ul ul a {
   color: #cccccc;
 }
