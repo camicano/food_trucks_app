@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+.filter_item:hover {
+background-color: #555;
+}
+
 #cssmenu {
   border: none;
   border: 0px;
