@@ -18,6 +18,7 @@ namespace :twitter do
             t_array << tweet
         end
       end
+      t_array.sort!
       Truck.update(truck.id, tweet_1: t_array[0], tweet_2: t_array[1], tweet_3: t_array[2])
     end
   end
