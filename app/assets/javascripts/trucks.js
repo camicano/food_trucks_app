@@ -109,20 +109,18 @@ function setMarkers(json) {
         position: location,
         map: map,
         icon: icon,
-        title: truck.name
+        title: truck.tweet_1
     });
     
     markers.push(marker);
 
     var infoWindow = new google.maps.InfoWindow({
-    
-      
+
+      content: truck.tweet_1
     });
 
     google.maps.event.addListener(marker, 'click', function() {
-      infobox.open(map, this);
-      map.panTo(myLatlng);
-      // infoWindow.open(map, marker);
+      infoWindow.open(map, marker);
     });
   });
 }
