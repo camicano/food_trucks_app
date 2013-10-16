@@ -3,6 +3,10 @@ var json,
   myLatlng,
   map;
 
+var markers = [];
+
+var animation_duration = 500;
+
 function geoFindMe() {
   var output = $("#out");
 
@@ -74,10 +78,10 @@ function initialize() {
     radius: 1000
   });
 
-  setMarkers();
+  setMarkers(json);
 }
 
-function setMarkers() {
+function setMarkers(json) {
   $.each(json, function(index, truck){
     var location = new google.maps.LatLng(truck.latitude, truck.longitude);
     var icon = {
@@ -91,6 +95,8 @@ function setMarkers() {
         title: truck.name
     });
 
+    markers.push(marker);
+
     var infoWindow = new google.maps.InfoWindow({
       content: truck.twitter
     });
@@ -99,6 +105,38 @@ function setMarkers() {
       infoWindow.open(map, marker);
     });
   });
+}
+
+function animateMenuIn() {
+  $side_menu = $('#side-menu');
+  $side_menu.stop().animate({
+      right: '0px',
+      opacity: 1
+    }, 
+    animation_duration, 
+    "easeInOutQuad",
+    function() {
+      $side_menu.addClass('active');
+    }
+  );
+}
+
+function animateMenuOut() {
+  $side_menu = $('#side-menu');
+  $side_menu.stop().animate({right: '-150px', opacity: 0.3}, animation_duration);
+  $side_menu.removeClass('active');
+}
+
+// Sets the map on all markers in the array.
+function setAllMap(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setAllMap(null);
 }
 
 $(function(){
@@ -112,5 +150,38 @@ $(function(){
     geoFindMe();
   }); 
 
+    $('#side-menu').hover(function() {
+    animateMenuIn();
+  }, function() {
+    animateMenuOut();
+  });
+
+  $('#filter_trucks').on('click', function(e){
+    e.preventDefault();
+    $('#filter_items').empty();
+    $.ajax({
+      url: '/foods.json',
+      method: 'GET',
+      dataType: 'json'
+    }).done(function(data){
+      $.each(data, function(index, food){
+        $('#filter_items').append("<li class='filter_item'>" + food.type_food + "</li>");
+      });
+          // created an ajax so that each time a type of food is called all tthe trucks that belong get call via json
+      $(".filter_item").on('click', function(e){
+        e.preventDefault();
+        var foodType = $(this).html();
+        var url = '/foods/show/' + foodType + '.json';
+        $.ajax({
+          url: url,
+          method: 'GET',
+          dataType: 'json'
+        }).done(function(data){
+          console.log(data);
+          clearMarkers();
+        });
+      });   
+    });
+  });
   // google.maps.event.addDomListener(window, 'load', initialize);
 });
