@@ -15,7 +15,7 @@ namespace :twitter do
       if t.statuses.count > 0
           t.statuses.each do |tweet|
             tx = Tweet.create(:post => tweet.text)
-          truck.tweets << tx
+            truck.tweets << tx
         end
       end
     end

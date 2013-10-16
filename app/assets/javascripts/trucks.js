@@ -92,7 +92,7 @@ function setMarkers() {
     });
 
     var infoWindow = new google.maps.InfoWindow({
-      content: truck.name
+      content: truck.twitter
     });
 
     google.maps.event.addListener(marker, 'click', function() {
