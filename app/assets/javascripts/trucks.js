@@ -92,18 +92,16 @@ function setMarkers(json) {
         position: location,
         map: map,
         icon: icon,
-        title: truck.name
+        title: truck.tweet_1
     });
     
     markers.push(marker);
 
     var infoWindow = new google.maps.InfoWindow({
-      content: truck.name
-      
+      content: truck.tweet_1
     });
 
     google.maps.event.addListener(marker, 'click', function() {
-      infoWindow.setContent(truck.name)
       infoWindow.open(map, marker);
     });
   });
