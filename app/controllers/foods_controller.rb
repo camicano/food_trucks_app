@@ -1,7 +1,6 @@
 class FoodsController < ApplicationController
 	def index
-		@response = Food.all 
-		@trucks = Truck.all
+		@response = Food.all
 
 		respond_to do |format|
 			format.json { render :json => @response.to_json }
@@ -9,8 +8,9 @@ class FoodsController < ApplicationController
 	end
 
 	def show
-		food = Food.find_type_food(:type_food)
-		@trucks = food.trucks
+		food = params[:type_food].split('.')
+		food_type = Food.find_by_type_food(food[0])
+		@trucks = food_type.trucks
 
 		respond_to do |format|
 			format.json { render :json => @trucks.to_json }
