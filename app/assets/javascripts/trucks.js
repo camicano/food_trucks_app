@@ -103,6 +103,7 @@ function setMarkers(json) {
     });
 
     google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.setContent(truck.name)
       infoWindow.open(map, marker);
     });
   });
@@ -157,27 +158,11 @@ $(function(){
     animateMenuOut();
   });
 
-  // ADD bubble info
-  // $(".").on('hover', function(bubble){
-  //       bubble.preventDefault();
-  //       var truck_tweets = $(this).html();
-  //       var url = '/trucks/tweets/' + truck_tweets + '.json';
-  //       $.ajax({
-  //         url: url,
-  //         method: 'GET',
-  //         dataType: 'json'
-  //       }).done(function(data){
-  //         console.log(data);
-  //         (data);
-  //       });
-  //     });
 
-  // var infoWindow = new google.maps.InfoWindow({
-  //     content: truck.name
-  //   });
-  // end bubble info
-
-
+  $('#all_trucks').on('click', function() {
+    clearMarkers();
+    setMarkers(json);
+  });
 
   $('#filter_trucks').on('click', function(e){
     e.preventDefault();
@@ -203,7 +188,7 @@ $(function(){
           clearMarkers();
           setMarkers(data);
         });
-      });   
+      }); 
     });
   });
 

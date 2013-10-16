@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131015195513) do
+ActiveRecord::Schema.define(:version => 20131016173232) do
 
   create_table "foods", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -34,6 +34,9 @@ ActiveRecord::Schema.define(:version => 20131015195513) do
     t.float    "longitude"
     t.string   "foursq_id"
     t.string   "twitter"
+    t.string   "tweet1"
+    t.string   "tweet2"
+    t.string   "tweet3"
   end
 
   create_table "tweets", :force => true do |t|
