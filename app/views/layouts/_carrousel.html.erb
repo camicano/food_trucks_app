@@ -1,0 +1,20 @@
+<div id="rotatescroll">
+		<div class="viewport">
+			<ul class="overview">
+				<li id="all_trucks"><%= link_to "ALL TRUCKS", root_path %></li>
+				<li><%= link_to "sign out", destroy_user_session_path, method: :delete %></li>
+				<% if user_signed_in? %>
+				<li><%= link_to "home", root_path %><a rel="group" href="images/hdr1.jpg"><img src="images/hdr1.jpg"></a></li>
+				<li><%= link_to "sign out", destroy_user_session_path, method: :delete %><a rel="group" href="images/hdr1.jpg"><img src="images/hdr1.jpg"></a></li>
+				<% else %>
+				<li><%= link_to "sign up", new_user_registration_path %></li>
+				<li><%= link_to "sign_in", new_user_session_path %></a></li>															
+			</ul>
+			<% end %>
+		</div>
+		</div>
+	</div>
+</div>
+		<div class="dot"></div>
+		<div class="overlay"></div>
+		<div class="thumb"></div>
