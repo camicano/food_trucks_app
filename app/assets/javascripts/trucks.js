@@ -94,11 +94,12 @@ function setMarkers(json) {
         icon: icon,
         title: truck.name
     });
-
+    
     markers.push(marker);
 
     var infoWindow = new google.maps.InfoWindow({
-      content: truck.twitter
+      content: truck.name
+      
     });
 
     google.maps.event.addListener(marker, 'click', function() {
@@ -150,11 +151,33 @@ $(function(){
     geoFindMe();
   }); 
 
-    $('#side-menu').hover(function() {
+  $('#side-menu').hover(function() {
     animateMenuIn();
   }, function() {
     animateMenuOut();
   });
+
+  // ADD bubble info
+  // $(".").on('hover', function(bubble){
+  //       bubble.preventDefault();
+  //       var truck_tweets = $(this).html();
+  //       var url = '/trucks/tweets/' + truck_tweets + '.json';
+  //       $.ajax({
+  //         url: url,
+  //         method: 'GET',
+  //         dataType: 'json'
+  //       }).done(function(data){
+  //         console.log(data);
+  //         (data);
+  //       });
+  //     });
+
+  // var infoWindow = new google.maps.InfoWindow({
+  //     content: truck.name
+  //   });
+  // end bubble info
+
+
 
   $('#filter_trucks').on('click', function(e){
     e.preventDefault();
@@ -179,9 +202,13 @@ $(function(){
         }).done(function(data){
           console.log(data);
           clearMarkers();
+          setMarkers(data);
         });
       });   
     });
   });
+
+  // Twitter Bubbles
+  
   // google.maps.event.addDomListener(window, 'load', initialize);
 });
