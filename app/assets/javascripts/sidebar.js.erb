@@ -29,16 +29,23 @@ $(document).ready(function() {
 
   $('#filter_trucks').on('click', function(e){
     e.preventDefault();
+    $('#filter_items').empty();
     $.ajax({
       url: '/foods.json',
       method: 'GET',
       dataType: 'json'
     }).done(function(data){
       $.each(data, function(index, food){
-        $('#filter_items').append("<li>" + food.type_food + "</li>");    
+        $('#filter_items').append("<li class='filter_item'>" + food.type_food + "</li>");
       });
-    });
+    });   
   });
+// created an ajax so that each time a type of food is called all tthe trucks that belong get call via json
+  // $(".filter_item").on('click', function(e){
+  //   e.preventDefault();
+  //   console.log("hello");
+  // });
+
 });
 
 
