@@ -33,8 +33,10 @@ ActiveRecord::Schema.define(:version => 20131016173232) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "foursq_id"
-    t.string   "tweets"
     t.string   "twitter"
+    t.string   "tweet1"
+    t.string   "tweet2"
+    t.string   "tweet3"
   end
 
   create_table "tweets", :force => true do |t|

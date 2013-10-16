@@ -94,14 +94,16 @@ function setMarkers(json) {
         icon: icon,
         title: truck.name
     });
-
+    
     markers.push(marker);
 
     var infoWindow = new google.maps.InfoWindow({
       content: truck.name
+      
     });
 
     google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.setContent(truck.name)
       infoWindow.open(map, marker);
     });
   });
@@ -156,6 +158,7 @@ $(function(){
     animateMenuOut();
   });
 
+
   $('#all_trucks').on('click', function() {
     clearMarkers();
     setMarkers(json);
@@ -188,5 +191,8 @@ $(function(){
       }); 
     });
   });
+
+  // Twitter Bubbles
+  
   // google.maps.event.addDomListener(window, 'load', initialize);
 });
