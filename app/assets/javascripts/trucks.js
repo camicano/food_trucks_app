@@ -1,8 +1,7 @@
 var json,
   trucks,
   myLatlng,
-  map,
-  infobox;
+  map;
 
 var markers = [];
 
@@ -115,7 +114,6 @@ function setMarkers(json) {
     markers.push(marker);
 
     var infoWindow = new google.maps.InfoWindow({
-
       content: truck.tweet_1
     });
 
