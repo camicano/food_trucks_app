@@ -20,4 +20,25 @@ namespace :fq do
 			Truck.create(name: name, latitude: lat, longitude: lng, twitter: twitter)
 		end
 	end
+	desc "test"
+	task :twitter => :environment do
+		trucks = [Truck.first, Truck.last]
+  	
+ 		trucks.each do |truck|
+            arg = truck.twitter || truck.name
+
+	      	t = Twitter.search("to: #{truck.twitter}", :count => 3, :result_type => "recent")
+
+			p t.statuses
+     #  	if t.statuses.count > 0
+     #    	t.statuses.each do |tweet|
+     #    	  tweet = "#{tweet.created_at}, #{tweet.text}"
+     #    	  t_array << tweet
+     #    	end
+     #  	end
+	    # puts t_array.sort!
+      	# Truck.update(truck.id, tweet_1: t_array[0], tweet_2: t_array[1], tweet_3: t_array[2])
+		end
+	end
 end
+

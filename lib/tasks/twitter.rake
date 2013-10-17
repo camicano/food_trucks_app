@@ -1,17 +1,19 @@
 namespace :twitter do 
 	
-	desc "Search Twitter for a query and number of results"
+  desc "Search Twitter for a query and number of results"
   task :search => :environment do
     require 'open-uri'
-    json = HTTParty.get("https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&ll=40.7,-74&categoryId=4bf58dd8d48988d1cb941735")
+
+    json = HTTParty.get("https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&near=New%20York%20City&query=Food%20Truck&intent=browse")
     hash = json.parsed_response 
     response = hash['response']['groups'][0]['items']
 
     response.each do |truck|
-      if Truck.find_by_foursq_id(truck['venue']['id'])
+      t = Truck.find_by_name(truck['name'])
+      if t
         lat = truck['location']['lat']
         lng = truck['location']['lng']
-        Truck.update(id: truck.id, latitude: lat, longitude: lng)
+        Truck.update(t.id, :latitude => lat, :longitude => lng)
       else
         twitter = truck['contact']['twitter']
         name = truck['name']
@@ -21,20 +23,37 @@ namespace :twitter do
       end
     end
 
-    trucks = Truck.all
+    json = HTTParty.get("https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&near=New%20York%20City&categoryId=4bf58dd8d48988d1cb941735&intent=browse")
+    hash = json.parsed_response 
+    response = hash['response']['groups'][0]['items']
+
+    response.each do |truck|
+      t = Truck.find_by_name(truck['name'])
+      if t
+        lat = truck['location']['lat']
+        lng = truck['location']['lng']
+        Truck.update(t.id, :latitude => lat, :longitude => lng)
+      else
+        twitter = truck['contact']['twitter']
+        name = truck['name']
+        lat = truck['location']['lat']
+        lng = truck['location']['lng']
+        Truck.create(name: name, latitude: lat, longitude: lng, twitter: twitter)
+      end
+    end
+
+    trucks = Truck.first
   	
     trucks.each do |truck|
- 			truck.twitter
-  		truck.name
-  		arg = truck.twitter || truck.name
+  		arg = truck.twitter
 
       t_array = []
       t = Twitter.search(arg, :count => 3, :result_type => "recent")
 
       if t.statuses.count > 0
-          t.statuses.each do |tweet|
-            tweet = "#{tweet.created_at}, #{tweet.text}"
-            t_array << tweet
+        t.statuses.each do |tweet|
+          tweet = "#{tweet.created_at}, #{tweet.text}"
+          t_array << tweet
         end
       end
       t_array.sort!
