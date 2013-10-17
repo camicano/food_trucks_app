@@ -77,10 +77,10 @@ function initialize() {
     });
 
   circle = new google.maps.Circle({
-    strokeColor: '#c4630f',
+    strokeColor: '#04454d',
     strokeOpacity: 0.6,
     strokeWeight: 2,
-    fillColor: '#c4630f',
+    fillColor: '#6DE7F7',
     fillOpacity: 0.2,
     map: map,
     center: myLatlng,

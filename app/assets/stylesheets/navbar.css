@@ -3,6 +3,17 @@ body {
   color: #ccc;
 }
 
+h1#logo {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    opacity: .9;
+    z-index: 500000;
+    color: #ffffff;
+    text-align: center;
+    font-size: 60px;
+    font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
+}
 
 #map {
 
