@@ -107,20 +107,22 @@ function setMarkers(json) {
     
     markers.push(marker);
 
-    // info bubble
-
     var infoBubble = new InfoBubble({
       width: 250,
       content: '<div class="bubblediv">'+'<ul>'+truck.name+'</ul>'+'<ul>'+'<li>'+'<a href="http://twitter.com/'+truck.twitter+'">'+'@'+truck.twitter+'</a>'+'</li>'+'<li>'+truck.tweet_1+'</li>'+'<li>'+truck.tweet_2+'</li>'+'<li>'+truck.tweet_3+'</li>'+'</ul>'+'</div>',
       position: location,
       // borderColor: '#cccccc',
-      arrowStyle: 1,
+      arrowStyle: 1
     });
     
-
-    google.maps.event.addListener(marker, 'click', function() {
-      infoBubble.close();
-      infoBubble.open(map, marker);
+    google.maps.event.addListener(marker, 'click', function(){
+      if(!infoBubble.isOpen()){
+        infoBubble.open(map, marker);
+      }
+      else
+      {
+        infoBubble.close();
+      }    
     });
   });
 };
