@@ -79,6 +79,7 @@ function initialize() {
   });
 
   setMarkers(json);
+
 }
 
 function setMarkers(json) {
@@ -92,20 +93,27 @@ function setMarkers(json) {
         position: location,
         map: map,
         icon: icon,
-        title: truck.tweet_1
+        title: truck.name
     });
     
     markers.push(marker);
 
-    var infoWindow = new google.maps.InfoWindow({
-      content: truck.tweet_1
+    // info bubble
+
+    var infoBubble = new InfoBubble({
+      width: 300,
+      content: '<div class="bubblediv">'+'<ul>'+truck.name+'</ul>'+'<ul>'+'<li>'+'@'+truck.twitter+'</li>'+'<li>'+truck.tweet_1+'</li>'+'<li>'+truck.tweet_2+'</li>'+'<li>'+truck.tweet_3+'</li>'+'</ul>'+'</div>',
+      position: location,
+      borderColor: '#cccccc',
     });
+    
 
     google.maps.event.addListener(marker, 'click', function() {
-      infoWindow.open(map, marker);
+      infoBubble.open(map, marker);
     });
   });
-}
+};
+
 
 function animateMenuIn() {
   $side_menu = $('#side-menu');
