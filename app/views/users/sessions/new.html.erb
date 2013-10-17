@@ -1,4 +1,7 @@
-<h2>Sign in</h2>
+<div class="container">
+	<div class="five columns">
+		<h2 id="formtitle">Sign in</h2>
+		<div id="formbubble"></br>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />
@@ -8,11 +11,18 @@
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <div><%= f.check_box :remember_me %> </br><%= f.label :remember_me %></div>
   <% end -%>
-
+</br>
   <div><%= f.submit "Sign in" %></div>
 <% end %>
 
+<div>New User?
 <%= render "users/shared/links" %>
+</br>
+
+
+</div>
+</div>
+</div>
  

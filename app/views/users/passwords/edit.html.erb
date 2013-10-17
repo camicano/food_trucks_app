@@ -1,4 +1,7 @@
-<h2>Change your password</h2>
+<div class="container">
+	<div class="five columns">
+		<h2 id="formtitle">Change your password</h2>
+		<div id="formbubble"></br>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
