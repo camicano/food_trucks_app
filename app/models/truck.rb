@@ -1,5 +1,5 @@
 class Truck < ActiveRecord::Base
-  attr_accessible :name, :photo_url, :twitter, :user_id, :latitude, :longitude, :tweet_1, :tweet_2, :tweet_3, :web_url, :location
+  attr_accessible :name, :twitter, :user_id, :latitude, :longitude, :tweet_1, :tweet_2, :tweet_3, :location
 
   geocoded_by :location
   before_validation :geocode
