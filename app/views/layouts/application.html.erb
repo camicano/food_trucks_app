@@ -11,14 +11,22 @@
 
 <body id="body">
 
-<div class="container" >
-	
-	<%= render 'layouts/sidebar' %>
 	<%if notice || alert %>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-	<% end %>
-	<%= yield %>
-</div>
+	<div>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+	</div>
+			<% end %>
+		
+
+	<div class="container" >
+		<!-- navbar here -->
+			<%= render 'layouts/sidebar' %>
+	</div>
+			
+			
+		<%= yield %>
+
+		</div>
 </body>
 </html>  

@@ -1,0 +1,58 @@
+.bubble {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 9.5px 19px;
+   -webkit-border-radius: 32px;
+   -moz-border-radius: 32px;
+   border-radius: 32px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 21px;
+   font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.bubble:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #dedbd5;
+   }
+.bubble:active {
+   border-top-color: #94afc2;
+   background: #cccccc;
+   }
+.bubblediv {
+   /*border-top-color: #28597a;*/
+   background: #28597a;
+   border-radius: 8px;
+   color: #ffffff;
+   max-width: 250px;
+   padding: 9.5px 14px;
+   font-size: 14px;
+	font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
+}
+.bubblediv ul {
+	font-size: 16px;
+	font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
+}
+.bubblediv ul > li {
+	font-size: 14px;
+  font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
+  text-decoration: none;
+
+}
+.bubblediv ul > li > a {
+   color: #FFFAC9;
+   font-size: 14px;
+  font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
+  text-decoration: none;
+
+}

@@ -70,20 +70,22 @@ function initialize() {
         position: myLatlng,
         map: map,
         icon: '/assets/main.png'
+        
     });
 
   circle = new google.maps.Circle({
     strokeColor: '#c4630f',
-    strokeOpacity: 0.7,
+    strokeOpacity: 0.6,
     strokeWeight: 2,
     fillColor: '#c4630f',
-    fillOpacity: 0.3,
+    fillOpacity: 0.2,
     map: map,
     center: myLatlng,
-    radius: 1000
+    radius: 500
   });
 
   setMarkers(json);
+
 }
 
 function setMarkers(json) {
@@ -102,15 +104,23 @@ function setMarkers(json) {
     
     markers.push(marker);
 
-    var infoWindow = new google.maps.InfoWindow({
-      content: truck.name
+    // info bubble
+
+    var infoBubble = new InfoBubble({
+      width: 250,
+      content: '<div class="bubblediv">'+'<ul>'+truck.name+'</ul>'+'<ul>'+'<li>'+'<a href="http://twitter.com/'+truck.twitter+'">'+'@'+truck.twitter+'</a>'+'</li>'+'<li>'+truck.tweet_1+'</li>'+'<li>'+truck.tweet_2+'</li>'+'<li>'+truck.tweet_3+'</li>'+'</ul>'+'</div>',
+      position: location,
+      // borderColor: '#cccccc',
+      arrowStyle: 1,
     });
+    
 
     google.maps.event.addListener(marker, 'click', function() {
-      infoWindow.open(map, marker);
+      infoBubble.open(map, marker);
     });
   });
-}
+};
+
 
 function animateMenuIn() {
   $side_menu = $('#side-menu');
