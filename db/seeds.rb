@@ -16,7 +16,7 @@ require 'open-uri'
 # intent
 # and downloading foursquare id and retreiving info separately.
 
-json = HTTParty.get("https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&near=New%20York%20City&categoryId=4bf58dd8d48988d1cb941735")
+json = HTTParty.get("https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&near=New%20York%20City&query=Food%20Truck&intent=browse")
 hash = json.parsed_response	
 response = hash['response']['groups'][0]['items']
 
@@ -28,20 +28,19 @@ response.each do |truck|
 	Truck.create(name: name, latitude: lat, longitude: lng, twitter: twitter)
 end
 
-# json2 = HTTParty.get("https://api.foursquare.com/v2/venues/explore?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&ll=40.7,-74&query=Food%20Truck")
-# hash2 = json2.parsed_response	
-# response2 = hash2['response']['groups'][0]['items']
+json = HTTParty.get("https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&near=New%20York%20City&categoryId=4bf58dd8d48988d1cb941735&intent=browse")
+hash = json.parsed_response	
+response = hash['response']['groups'][0]['items']
 
-# response2.each do |truck|
-	
-# 	unless Truck.find_by_foursq_id(truck['venue']['id'])
-# 		id = truck['venue']['id']
-# 		name = truck['venue']['name'] 
-# 		lat = truck['venue']['location']['lat']
-# 		lng = truck['venue']['location']['lng']
-# 		Truck.create(name: name, latitude: lat, longitude: lng, foursq_id: id)
-# 	end
-# end
+response.each do |truck|
+	unless Truck.find_by_name(truck['name'])
+		twitter = truck['contact']['twitter']
+		name = truck['name']
+		lat = truck['location']['lat']
+		lng = truck['location']['lng']
+		Truck.create(name: name, latitude: lat, longitude: lng, twitter: twitter)
+	end	
+end
 
 types_of_food = ["mexican", "italian", "ice cream"]
 
