@@ -36,7 +36,7 @@ function initialize() {
     {
       stylers: [
         { hue: "#cccccc" },
-        { saturation: -100 },
+        { saturation: -200 },
         { lightness: -50 }
       ]
     },{
