@@ -11,8 +11,12 @@ Food.delete_all
 require 'open-uri'
 
 
+# try limit50
+# section "food" with queries
+# intent
+# and downloading foursquare id and retreiving info separately.
 
-json = HTTParty.get("https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&ll=40.7,-74&categoryId=4bf58dd8d48988d1cb941735")
+json = HTTParty.get("https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&near=New%20York%20City&categoryId=4bf58dd8d48988d1cb941735")
 hash = json.parsed_response	
 response = hash['response']['groups'][0]['items']
 
