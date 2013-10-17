@@ -35,7 +35,7 @@ function initialize() {
   var styles = [
     {
       stylers: [
-        { hue: "#00D5FF" },
+        { hue: "#cccccc" },
         { saturation: -100 },
         { lightness: -50 }
       ]
@@ -43,15 +43,18 @@ function initialize() {
       featureType: "water",
       elementType: "geometry.fill",
       stylers: [
-        { hue: "#00aaff" },
-        { saturation: -27 },
-        { visibility: "simplified" }
+        { "visibility": "on" },
+        { "weight": 0.2 },
+        { "hue": "#6DE7F7" },
+        { "saturation": 56 },
+        { "lightness": 72 }
       ]
     },{
       featureType: "road",
       elementType: "labels",
       stylers: [
-        { visibility: "off" }
+        { "visibility": "off" },
+        { "hue": "#cccccc" }
       ]
     }
   ];
@@ -70,14 +73,14 @@ function initialize() {
         position: myLatlng,
         map: map,
         icon: '/assets/main.png'
-        
+
     });
 
   circle = new google.maps.Circle({
-    strokeColor: '#c4630f',
+    strokeColor: '#04454d',
     strokeOpacity: 0.6,
     strokeWeight: 2,
-    fillColor: '#c4630f',
+    fillColor: '#6DE7F7',
     fillOpacity: 0.2,
     map: map,
     center: myLatlng,
@@ -116,6 +119,7 @@ function setMarkers(json) {
     
 
     google.maps.event.addListener(marker, 'click', function() {
+      infoBubble.close();
       infoBubble.open(map, marker);
     });
   });
