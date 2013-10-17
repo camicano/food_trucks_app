@@ -70,6 +70,7 @@ function initialize() {
         position: myLatlng,
         map: map,
         icon: '/assets/main.png'
+        
     });
 
   circle = new google.maps.Circle({
@@ -85,21 +86,6 @@ function initialize() {
 
   setMarkers(json);
 
-  // infobox = new google.maps.InfoBox({
-  //   content: document.getElementById("infobox"),
-  //   diasbleAutoPan: false,
-  //   madWidth: 150,
-  //   pixelOffset: new google.maps.Size(-140,0),
-  //   zIndex: null,
-  //   boxStyle: {
-  //     background: "url('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/examples/tipbox.gif') no-repeat",
-  //     opacity: 0.7,
-  //     width: "280px"
-  //   },
-  //   closeBoxMargin: "12px 4px 2px 2px",
-  //   closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
-  //   infoBoxClearance: new google.maps.Size(1,1)
-  // });
 }
 
 function setMarkers(json) {
@@ -118,15 +104,23 @@ function setMarkers(json) {
     
     markers.push(marker);
 
-    var infoWindow = new google.maps.InfoWindow({
-      content: truck.name
+    // info bubble
+
+    var infoBubble = new InfoBubble({
+      width: 250,
+      content: '<div class="bubblediv">'+'<ul>'+truck.name+'</ul>'+'<ul>'+'<li>'+'<a href="http://twitter.com/'+truck.twitter+'">'+'@'+truck.twitter+'</a>'+'</li>'+'<li>'+truck.tweet_1+'</li>'+'<li>'+truck.tweet_2+'</li>'+'<li>'+truck.tweet_3+'</li>'+'</ul>'+'</div>',
+      position: location,
+      // borderColor: '#cccccc',
+      arrowStyle: 1,
     });
+    
 
     google.maps.event.addListener(marker, 'click', function() {
-      infoWindow.open(map, marker);
+      infoBubble.open(map, marker);
     });
   });
-}
+};
+
 
 function animateMenuIn() {
   $side_menu = $('#side-menu');
