@@ -43,7 +43,7 @@ function initialize() {
       featureType: "water",
       elementType: "geometry.fill",
       stylers: [
-        { "visibility": "on" },
+        { visibility: "on" },
         { "weight": 0.2 },
         { "hue": "#6DE7F7" },
         { "saturation": 56 },

@@ -1,10 +1,11 @@
 body {
   background-color: #383838;
-  color: #ccc;
+  color: #cccccc;
 }
 
 h1#logo {
     position: absolute;
+    bottom: 0px;
     background-color: rgba(0,0,0,0);
     width: 100%;
     height: 60px;
@@ -22,6 +23,7 @@ h1#logo:hover {
     position: absolute;
     background-color: rgba(37,128,162,1);
     width: 100%;
+    bottom: 0px;
     height: 60px;
     padding: 10px;
     opacity: 1;
@@ -42,14 +44,15 @@ div.alert > p {
 
 #map {
 
-  height: 600px;
+  height: 100%;
   width: 100%;
   background-color: #cccccc;
 }
 
 #map-canvas {
-    height: 600px;
+    height: 780px;
     width: 100%;
+    position: fixed;
     /*background-color: red;*/
     margin: 0px;
     padding: 0px
@@ -97,6 +100,14 @@ background: #2580a2 bottom center no-repeat;
   margin: 0;
   padding: 0;
 }
+
+#cssmenu ul:hover {
+  background: #333333;
+  height: 35px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 #cssmenu li {
   /*float: left;*/
   padding: 0px;
@@ -131,14 +142,14 @@ background: #2580a2 bottom center no-repeat;
   margin: 0;
   padding: 0;
 }
-#cssmenu > ul > li:hover {
+.cssmenu > ul > li:hover {
   color: #cccccc;
   /*background: #2580a2 bottom center no-repeat;*/
   text-align: center;
   text-decoration: none;
 
 }
-#cssmenu > ul > li > ul:hover {
+.cssmenu > ul > li > ul:hover {
   /*color: #cccccc;*/
   background: #2580a2 bottom center no-repeat;
   text-align: center;
@@ -148,7 +159,7 @@ background: #2580a2 bottom center no-repeat;
 #cssmenu ul ul a {
   color: #cccccc;
 }
-#cssmenu li > a:hover,
+.cssmenu li > a:hover,
 #cssmenu ul li:hover > a {
   background: #2580a2 bottom center no-repeat;
   color: #FFFFFF;
@@ -174,13 +185,22 @@ background: #2580a2 bottom center no-repeat;
 #cssmenu li li {
   /*background: url('sub_sep.png') bottom left no-repeat;*/
   display: block;
-  float: none;
+  float: bottom;
   margin: 0px;
-  padding: 0px;
-  width: 225px;
+  padding: 8px;
+  width: 150px;
+  background: #333333;
 }
+#cssmenu li li:hover {
+  /*background: url('sub_sep.png') bottom left no-repeat;*/
+  display: block;
+  float: bottom;
+  margin: 0px;
+  padding: 8px;
+  width: 150px;
+  background: #2580a2 bottom center no-repeat;}
 #cssmenu li:hover li a {
-  background: none;
+  background: #333333;
 }
 #cssmenu li ul a {
   display: block;
