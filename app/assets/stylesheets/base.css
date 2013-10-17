@@ -94,7 +94,7 @@
 
 /* #Links
 ================================================== */
-	a, a:visited { color: #333; text-decoration: underline; outline: 0; }
+	a, a:visited { color: #333; text-decoration: none; outline: 0; }
 	a:hover, a:focus { color: #000; }
 	p a, p a:visited { line-height: inherit; }
 
@@ -144,10 +144,10 @@
 	  border-left: 1px solid #ccc;
 	  -moz-border-radius: 3px;
 	  -webkit-border-radius: 3px;
-	  border-radius: 3px;
+	  border-radius: 4px;
 	  color: #444;
 	  display: inline-block;
-	  font-size: 11px;
+	  font-size: 16px;
 	  font-weight: bold;
 	  text-decoration: none;
 	  text-shadow: 0 1px rgba(255, 255, 255, .75);
@@ -223,7 +223,7 @@
 		outline: none;
 		-moz-border-radius: 2px;
 		-webkit-border-radius: 2px;
-		border-radius: 2px;
+		border-radius: 6px;
 		font: 13px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		color: #777;
 		margin: 0;
@@ -249,7 +249,7 @@
 	legend {
 		display: block;
 		font-weight: bold;
-		font-size: 13px;  }
+		font-size: 16px;  }
 	select {
 		width: 220px; }
 	input[type="checkbox"] {
