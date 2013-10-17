@@ -15,10 +15,9 @@ namespace :fq do
 		response.each do |truck|
 			twitter = truck['contact']['twitter']
 			name = truck['name']
-			id = truck['id']
 			lat = truck['location']['lat']
 			lng = truck['location']['lng']
-			Truck.create(name: name, latitude: lat, longitude: lng, foursq_id: id, twitter: twitter)
+			Truck.create(name: name, latitude: lat, longitude: lng, twitter: twitter)
 		end
 	end
 end

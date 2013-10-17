@@ -4,7 +4,6 @@ var json,
   map;
 
 var markers = [];
-
 var animation_duration = 500;
 
 function geoFindMe() {
@@ -67,6 +66,12 @@ function initialize() {
 
   map.setOptions({styles: styles});
 
+  var mainmarker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        icon: '/assets/main.png'
+    });
+
   circle = new google.maps.Circle({
     strokeColor: '#c4630f',
     strokeOpacity: 0.6,
@@ -108,13 +113,13 @@ function setMarkers(json) {
         position: location,
         map: map,
         icon: icon,
-        title: truck.tweet_1
+        title: truck.name
     });
     
     markers.push(marker);
 
     var infoWindow = new google.maps.InfoWindow({
-      content: truck.tweet_1
+      content: truck.name
     });
 
     google.maps.event.addListener(marker, 'click', function() {
