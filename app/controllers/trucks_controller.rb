@@ -3,6 +3,7 @@ class TrucksController < ApplicationController
 
 	def index
 		@response = Truck.all
+		@user = current_user
 
 		respond_to do |format|
 			format.html
@@ -16,17 +17,23 @@ class TrucksController < ApplicationController
 
 	def create
 		@truck = Truck.create(params[:truck])
+		current_user.trucks << @truck
+		redirect_to root_path
 	end
 
 	def edit
-		@truck = Truck.find(params[:id])
+		truck = current_user.trucks.first
+		@truck = Truck.find(truck.id)
 	end
 
 	def update
-		@truck = Truck.update(params[:id], params[:truck])
+		truck = current_user.trucks.first
+		Truck.update(truck.id, params[:truck])
+		redirect_to root_path
 	end
 
 	def show
-		@truck = Truck.find(params[:id])
+		truck = current_user.trucks.first
+		@truck = Truck.find(truck.id)
 	end
 end

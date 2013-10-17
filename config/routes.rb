@@ -9,7 +9,7 @@ FoodTruckApp::Application.routes.draw do
 	get '/trucks/new', :to => 'trucks#new', :as => 'new_truck'
 	post '/trucks', :to => 'trucks#create', :as => 'create'
 	put '/trucks/:id', :to => 'trucks#update', :as => 'update'
-	get '/trucks/:id/edit', :to => 'trucks#edit', :as => 'edit_truck'
+	get '/trucks/edit', :to => 'trucks#edit', :as => 'edit_truck'
 	delete '/trucks/:id/destroy', :to => 'trucks#destroy', :as => 'destroy'
-	get '/trucks/:id/show', :to => 'trucks#show', :as => 'truck'
+	get '/trucks/show', :to => 'trucks#show', :as => 'truck'
 end
