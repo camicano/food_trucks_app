@@ -111,7 +111,7 @@ function setMarkers(json) {
       width: 250,
       content: '<div class="bubblediv">'+'<ul>'+truck.name+'</ul>'+'<ul>'+'<li>'+'<a href="http://twitter.com/'+truck.twitter+'">'+'@'+truck.twitter+'</a>'+'</li>'+'<li>'+truck.tweet_1+'</li>'+'<li>'+truck.tweet_2+'</li>'+'<li>'+truck.tweet_3+'</li>'+'</ul>'+'</div>',
       position: location,
-      // borderColor: '#cccccc',
+      borderColor: '#cccccc',
       arrowStyle: 1
     });
     
