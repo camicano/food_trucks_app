@@ -4,6 +4,7 @@ class TrucksController < ApplicationController
 	def index
 		@response = Truck.all
 		@user = current_user
+		@response.sort!
 
 		respond_to do |format|
 			format.html
@@ -35,5 +36,15 @@ class TrucksController < ApplicationController
 	def show
 		truck = current_user.trucks.first
 		@truck = Truck.find(truck.id)
+	end
+
+	def ajax
+		name = params[:name].split('.')
+		truck = Truck.find_by_name(truck[0].split("%").join(" "))
+
+		respond_to do |format|
+			format.json { render :json => truck.to_json }
+		end	
+
 	end
 end

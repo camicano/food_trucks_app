@@ -2,7 +2,6 @@ var json,
   trucks,
   myLatlng,
   map;
-
 var markers = [];
 var animation_duration = 500;
 
@@ -29,19 +28,16 @@ function geoFindMe() {
   }
 
   output.innerHTML = "<p>Locating...</p>";
-
   navigator.geolocation.getCurrentPosition(success, error);
 }
 
 function initialize() {
-  var styles = [
-    {
+  var styles = [{
       stylers: [
         { hue: "#cccccc" },
         { saturation: -200 },
         { lightness: -50 }
-      ]
-    },{
+    ]},{
       featureType: "water",
       elementType: "geometry.fill",
       stylers: [
@@ -50,8 +46,7 @@ function initialize() {
         { "hue": "#6DE7F7" },
         { "saturation": 56 },
         { "lightness": 72 }
-      ]
-    },{
+    ]},{
       featureType: "road",
       elementType: "labels",
       stylers: [
@@ -63,7 +58,7 @@ function initialize() {
 
   var mapOptions = {
       center: myLatlng,
-      zoom: 15,
+      zoom: 16,
       mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
@@ -108,21 +103,10 @@ function setMarkers(json) {
     });
     
     markers.push(marker);
-    var content;
-
-    function bubbleContent() {
-      if(truck.twitter&&truck.tweet_1&&truck.tweet_3) {
-        content = '<div class="bubblediv">'+'<ul>'+truck.name+'</ul>'+'<ul>'+'<li>'+'<a href="http://twitter.com/'+truck.twitter+'">'+'@'+truck.twitter+'</a>'+'</li>'+'<li>'+truck.tweet_1+'</li>'+'<li>'+truck.tweet_2+'</li>'+'<li>'+truck.tweet_3+'</li>'+'</ul>'+'</div>';
-      }else{
-        content = '<div class="bubblediv">'+'<ul>'+name+'</ul>'+'</div>';
-      }
-    }
-
-    bubbleContent();
 
     var infoBubble = new InfoBubble({
       width: 250,
-      content: content,
+      content: '<div class="bubblediv">'+'<ul>'+truck.name+'</ul>'+'</div>',
       position: location,
       borderColor: '#cccccc',
       arrowStyle: 1
@@ -182,13 +166,6 @@ $(function(){
   }).done(function(data){
     json = data;
     geoFindMe();
-  $('#filter_trucks').on('click', function(e){
-    e.preventDefault();
-    $('#filter_items').empty();
-    $.each(data, function(index, food){
-        $('#filter_items').append("<li class='filter_item'>" + food.name + "</li>");
-      });
-    });
   }); 
 
   $('#side-menu').hover(function() {
@@ -203,33 +180,33 @@ $(function(){
     setMarkers(json);
   });
 
-  // $('#filter_trucks').on('click', function(e){
-  //   e.preventDefault();
-  //   $('#filter_items').empty();
-  //   $.ajax({
-  //     url: '/foods.json',
-  //     method: 'GET',
-  //     dataType: 'json'
-  //   }).done(function(data){
-  //     $.each(data, function(index, food){
-  //       $('#filter_items').append("<li class='filter_item'>" + food.type_food + "</li>");
-  //     });
-  //         // created an ajax so that each time a type of food is called all tthe trucks that belong get call via json
-  //     $(".filter_item").on('click', function(e){
-  //       e.preventDefault();
-  //       var foodType = $(this).html();
-  //       var url = '/foods/show/' + foodType + '.json';
-  //       $.ajax({
-  //         url: url,
-  //         method: 'GET',
-  //         dataType: 'json'
-  //       }).done(function(data){
-  //         clearMarkers();
-  //         setMarkers(data);
-  //       });
-  //     }); 
-  //   });
-  // });
+  $('#filter_trucks').on('click', function(e){
+    e.preventDefault();
+    $('#filter_items').empty();
+    $.ajax({
+      url: '/trucks.json',
+      method: 'GET',
+      dataType: 'json'
+    }).done(function(data){
+      $.each(data, function(index, truck){
+        $('#filter_items').append("<li class='filter_item'>" + truck.name + "</li>");
+      });
+
+      $(".filter_item").on('click', function(e){
+        e.preventDefault();
+        var truckName = $(this).html();
+        var url = '/trucks/ajax/' + truckName.split(' ').join('%');
+        $.ajax({
+          url: url,
+          method: 'GET',
+          dataType: 'json'
+        }).done(function(data){
+          clearMarkers();
+          setMarkers(data);
+        });
+      }); 
+    });
+  });
 
   // Twitter Bubbles
   

@@ -41,21 +41,5 @@ namespace :twitter do
         Truck.create(name: name, latitude: lat, longitude: lng, twitter: twitter)
       end
     end
-
-    trucks = Truck.all
-    trucks.each do |truck|
-      unless !truck.twitter
-        t = Twitter.search("to:#{truck.twitter}", :count => 3, :result_type => "recent")
-        t_array = []
-        if t.statuses.count > 0
-          t.statuses do |tweet|
-            tweet = "#{tweet.text}"
-            t_array << tweet
-          end
-        end
-        t_array.sort!
-        Truck.update(truck.id, tweet_1: t_array[0], tweet_2: t_array[1], tweet_3: t_array[2])
-      end
-    end
   end
 end
