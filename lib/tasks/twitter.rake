@@ -11,7 +11,7 @@ namespace :twitter do
     response = hash['response']['groups'][0]['items']
 
     response.each do |truck|
-      t = Truck.find_by_name(truck['name'])
+      # t = Truck.find_by_name(truck['name'])
       # if t
       #   lat = truck['location']['lat']
       #   lng = truck['location']['lng']
@@ -31,7 +31,7 @@ namespace :twitter do
     response = hash['response']['groups'][0]['items']
 
     response.each do |truck|
-      t = Truck.find_by_name(truck['name'])
+      # t = Truck.find_by_name(truck['name'])
       # if t
       #   lat = truck['location']['lat']
       #   lng = truck['location']['lng']
