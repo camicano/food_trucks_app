@@ -22,7 +22,7 @@ namespace :twitter do
         lat = truck['location']['lat']
         lng = truck['location']['lng']
         Truck.create(name: name, latitude: lat, longitude: lng, twitter: twitter)
-      end
+      # end
     end
 
     # First http request to foursquare using caterogyid
@@ -42,7 +42,7 @@ namespace :twitter do
         lat = truck['location']['lat']
         lng = truck['location']['lng']
         Truck.create(name: name, latitude: lat, longitude: lng, twitter: twitter)
-      end
+      # end
     end
   end
 end
