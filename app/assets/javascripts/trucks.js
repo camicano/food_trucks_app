@@ -216,7 +216,7 @@ $(function(){
   $('#filter_trucks').on('click', function(){
     $('#filter_items').empty();
     $.each(markers, function(index, truck){
-      $('#filter_items').append("<li class='filter_item'>" + truck.title + "</li>");
+      $('#filter_items').append("<li class='filter_item'>"+truck.title+"</li>"+'</ul>'+'</div>'+'</div>'+'</div>');
     });
     $(".filter_item").on('click', function(e){
       e.preventDefault();
