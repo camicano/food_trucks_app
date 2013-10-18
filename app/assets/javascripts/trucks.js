@@ -88,6 +88,40 @@ function initialize() {
 
 }
 
+function setMarker(truck) {
+  var location = new google.maps.LatLng(truck.latitude, truck.longitude);
+  var icon = {
+    url: '/assets/truck.png'
+  };
+
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+    icon: icon,
+    title: truck.name
+  });
+    
+  markers.push(marker);
+
+  var infoBubble = new InfoBubble({
+    width: 250,
+    content: '<div class="bubblediv">'+'<ul>'+truck.name+'</ul>'+'</div>',
+    position: location,
+    borderColor: '#cccccc',
+    arrowStyle: 1
+  });
+    
+  google.maps.event.addListener(marker, 'click', function(){
+    if(!infoBubble.isOpen()){
+      infoBubble.open(map, marker);
+    }
+    else
+    {
+      infoBubble.close();
+    }   
+  });
+};
+
 function setMarkers(json) {
   $.each(json, function(index, truck){
     var location = new google.maps.LatLng(truck.latitude, truck.longitude);
@@ -180,35 +214,23 @@ $(function(){
     setMarkers(json);
   });
 
-  $('#filter_trucks').on('click', function(e){
-    e.preventDefault();
+  $('#filter_trucks').on('click', function(){
     $('#filter_items').empty();
-    $.ajax({
-      url: '/trucks.json',
-      method: 'GET',
-      dataType: 'json'
-    }).done(function(data){
-      $.each(data, function(index, truck){
-        $('#filter_items').append("<li class='filter_item'>" + truck.name + "</li>");
-      });
-
-      $(".filter_item").on('click', function(e){
+    $.each(markers, function(index, truck){
+      $('#filter_items').append("<li class='filter_item'>" + truck.title + "</li>");
+    });
+    $(".filter_item").on('click', function(e){
         e.preventDefault();
         var truckName = $(this).html();
-        var url = '/trucks/ajax/' + truckName.split(' ').join('%');
+        var url = '/trucks/ajax/' + truckName.split(' ').join('%20') + '.json';
         $.ajax({
           url: url,
           method: 'GET',
           dataType: 'json'
         }).done(function(data){
           clearMarkers();
-          setMarkers(data);
+          setMarker(data);
         });
       }); 
-    });
   });
-
-  // Twitter Bubbles
-  
-  // google.maps.event.addDomListener(window, 'load', initialize);
 });

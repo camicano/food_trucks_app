@@ -39,9 +39,7 @@ class TrucksController < ApplicationController
 	end
 
 	def ajax
-		name = params[:name].split('.')
-		truck = Truck.find_by_name(truck[0].split("%").join(" "))
-
+		truck = Truck.find_by_name(params[:name])
 		respond_to do |format|
 			format.json { render :json => truck.to_json }
 		end	

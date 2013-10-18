@@ -5,7 +5,7 @@ FoodTruckApp::Application.routes.draw do
 	get '/trucks', :to => 'trucks#index'
 	get '/foods', :to => 'foods#index'
 
-	get '/trucks/ajax/:name', :to => 'foods#ajax'
+	get '/trucks/ajax/:name', :to => 'trucks#ajax'
 	get '/trucks/new', :to => 'trucks#new', :as => 'new_truck'
 	post '/trucks', :to => 'trucks#create', :as => 'create'
 	put '/trucks/:id', :to => 'trucks#update', :as => 'update'
