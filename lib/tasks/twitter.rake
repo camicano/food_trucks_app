@@ -12,11 +12,11 @@ namespace :twitter do
 
     response.each do |truck|
       t = Truck.find_by_name(truck['name'])
-      if t
-        lat = truck['location']['lat']
-        lng = truck['location']['lng']
-        Truck.update(t.id, :latitude => lat, :longitude => lng)
-      else
+      # if t
+      #   lat = truck['location']['lat']
+      #   lng = truck['location']['lng']
+      #   Truck.update(t.id, :latitude => lat, :longitude => lng)
+      # else
         twitter = truck['contact']['twitter']        
         name = truck['name']
         lat = truck['location']['lat']
@@ -32,11 +32,11 @@ namespace :twitter do
 
     response.each do |truck|
       t = Truck.find_by_name(truck['name'])
-      if t
-        lat = truck['location']['lat']
-        lng = truck['location']['lng']
-        Truck.update(t.id, :latitude => lat, :longitude => lng)
-      else
+      # if t
+      #   lat = truck['location']['lat']
+      #   lng = truck['location']['lng']
+      #   Truck.update(t.id, :latitude => lat, :longitude => lng)
+      # else
         twitter = truck['contact']['twitter']
         name = truck['name']
         lat = truck['location']['lat']
