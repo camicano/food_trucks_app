@@ -187,6 +187,7 @@ function animateMenuOut() {
 // #########ONLOAD FUNCTIONS############
 // #####################################
 $(function(){
+  $('#wrapper').hide();
 
 // AJAX that reteives the initial markers for the map
   $.ajax({
@@ -214,10 +215,11 @@ $(function(){
 
 // Select by truck function
   $('#filter_trucks').on('click', function(){
-    $('#filter_items').empty();
+    $('.force-overflow').empty();
+    $('#wrapper').show();
     $.each(markers, function(index, truck){
-      $('#filter_items').append("<li class='filter_item'>" + truck.title + "</li>");
-    });
+      $('.force-overflow').append('<p class="filter_item">'+truck.title+"</p>");
+    })
     $(".filter_item").on('click', function(e){
       e.preventDefault();
       var truckName = $(this).html();
