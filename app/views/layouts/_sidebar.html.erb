@@ -1,7 +1,9 @@
 <div>
 	<div class="aside" id="side-menu">
-	
+		<div id="cssmenu">
+
 			<% if user_signed_in? %>
+
 				<ul>
  					<li><%= link_to "Profile", truck_path %></li>
     			</ul>
@@ -20,7 +22,7 @@
 				<li id="all_trucks">All Trucks</li>
 			</ul>
 			<ul>
-				<li id="filter_trucks">Filter</li>	
+				<li id="filter_trucks">Select Truck</li>	
 					<div id="wrapper">
 	    			<div class="scrollbar" id="style-2">
 	      			<div class="force-overflow">
