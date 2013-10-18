@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Food Trucks</title>
+	<head>
+  	<title>Food Trucks</title>
+  	<%= stylesheet_link_tag    "application", :media => "all" %>
+  	<%= javascript_include_tag "application" %>
+  	<script type'text/javacript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT04OIyuDnmRR1gQtVdk0aqRAgEHovTRI&amp;sensor=false"></script>
+  	<%= csrf_meta_tags %>
+	</head>
 
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <script type'text/javacript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT04OIyuDnmRR1gQtVdk0aqRAgEHovTRI&amp;sensor=false"></script>
-  <%= csrf_meta_tags %>
-</head>
-
-<body id="body">
-
-	<%if notice || alert %>
-		<div class="alert">
-			<p class="notice"><%= notice %></p>
-			<p class="alert"><%= alert %></p>
-		</div>
-	<% end %>
-		
+	<body id="body">
+		<%if notice || alert %>
+			<div class="alert">
+				<p class="notice"><%= notice %></p>
+				<p class="alert"><%= alert %></p>
+			</div>
+		<% end %>
 
 		<div class="container" >
-				<%= render 'layouts/sidebar' %>
+			<%= render 'layouts/sidebar' %>
 		</div>
-			
+
 		<%= yield %>
-</body>
+	</body>
 </html>  
