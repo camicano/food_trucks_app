@@ -1,15 +1,17 @@
 // #########GLOBAL VARIABLES#########
 // ##################################
 var json,
+  json2,
   trucks,
   myLatlng,
+  coordinates,
   map;
 var markers = [];
 var animation_duration = 500;
 
+
 // ############Functions############
 // #################################
-
 // function that finds the location of the devise.
 function geoFindMe() {
   var output = $("#out");
@@ -22,16 +24,42 @@ function geoFindMe() {
     latitude  = position.coords.latitude;
     longitude = position.coords.longitude;
     output.html("<p>Located</p>");
+    coordinates = latitude + ", " + longitude;
     myLatlng = new google.maps.LatLng(latitude,longitude);
+    find_trucks();
     initialize();
   }
   function error() {
     output.html("Unable to retrieve your location");
-    myLatlng = new google.maps.LatLng(40.6700, -73.9400);
+    myLatlng = new google.maps.LatLng(40.7, -74);
+    coordinates = "40.7, -74";
+    find_trucks();
     initialize();
   }
   output.html("<p>Locating...</p>");
   navigator.geolocation.getCurrentPosition(success, error);
+}
+
+// Function that requests foursquare information.
+function find_trucks(){
+  var url = "https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&near=New%20York%20NY&radius=30000&limit=50&categoryId=4bf58dd8d48988d1cb941735&intent=browse";
+  $.ajax({
+    url: url,
+    method: 'GET',
+    dataType: json
+  }).done(function(data){
+    json = data['response']['groups'][0]['items'];
+    setMarkers(json);
+  });
+  var url2 = "https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&near=Brooklyn%20NY&radius=30000&limit=50&categoryId=4bf58dd8d48988d1cb941735&intent=browse";
+  $.ajax({
+    url: url2,
+    method: 'GET',
+    dataType: json
+  }).done(function(data){
+    json2 = data['response']['groups'][0]['items'];
+    setMarkers(json2);
+  });
 }
 
 // Function that initializes the googla map and set the main marker and circle around it
@@ -61,9 +89,10 @@ function initialize() {
   ];
   var mapOptions = {
     center: myLatlng,
-    zoom: 16,
+    zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
+
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
   map.setOptions({styles: styles});
 
@@ -72,8 +101,8 @@ function initialize() {
     position: myLatlng,
     map: map,
     icon: '/assets/main.png'
-
     });
+
   circle = new google.maps.Circle({
     strokeColor: '#04454d',
     strokeOpacity: 0.6,
@@ -85,7 +114,7 @@ function initialize() {
     radius: 500
   });
 
-  setMarkers(json);
+  // setMarkers();
 }
 
 //  Function that sets one marker
@@ -117,27 +146,34 @@ function setMarker(truck) {
     else
     {
       infoBubble.close();
-    }  
+    }
   });
 }
 
 // Function that sets multiple markers
-function setMarkers(json) {
-  $.each(json, function(index, truck){
-    var location = new google.maps.LatLng(truck.latitude, truck.longitude);
+function setMarkers(trucks) {
+  $.each(trucks, function(index, truck){
+    if(truck['name'] != "Starbucks" && truck['name'] != "Red Hook Ballfield Food Vendors" && truck['name'] != "Smorgasburg Pier 5" & truck['name'] != "Smorgasburg Williamsburg") {  
+    var location = new google.maps.LatLng(truck['location']['lat'], truck['location']['lng']);
     var icon = { url: '/assets/truck.png' };
     var marker = new google.maps.Marker({
         position: location,
         map: map,
         icon: icon,
-        title: truck.name
+        title: truck['name']
     });
     
     markers.push(marker);
 
+    if(truck['contact']['twitter'] != undefined){
+      twitter = '@'+truck['contact']['twitter'];
+    }else{
+      twitter = " ";
+    }
+
     var infoBubble = new InfoBubble({
       width: 250,
-      content: '<div class="bubblediv">'+'<ul>'+truck.name+'</ul>'+'</div>',
+      content: '<div class="bubblediv">'+'<p>'+truck['name']+'</p>'+'<a href="https://www.twitter.com/'+twitter+'"><p>'+twitter+'</p></a>'+'</div>',
       position: location,
       borderColor: '#cccccc',
       arrowStyle: 1
@@ -149,8 +185,9 @@ function setMarkers(json) {
       else
       {
         infoBubble.close();
-      } 
+      }
     });
+  }
   });
 }
 // Sets the map on all markers in the array.
@@ -184,21 +221,21 @@ function animateMenuOut() {
   $side_menu.removeClass('active');
 }
 
+
 // #########ONLOAD FUNCTIONS############
 // #####################################
 $(function(){
-  $('#wrapper').hide();
 
 // AJAX that reteives the initial markers for the map
-  $.ajax({
-    url: '/trucks.json',
-    method: 'GET',
-    dataType: 'json'
-  }).done(function(data){
-    json = data;
-    geoFindMe();
-  }),
-
+  // $.ajax({
+  //   url: '/trucks.json',
+  //   method: 'GET',
+  //   dataType: 'json'
+  // }).done(function(data){
+  //   json = data;
+  //   geoFindMe();
+  // }),
+  geoFindMe();
 // MENU EVENT LISTENERS
 // Menu hover function
   $('#side-menu').hover(function() {
@@ -215,11 +252,10 @@ $(function(){
 
 // Select by truck function
   $('#filter_trucks').on('click', function(){
-    $('.force-overflow').empty();
-    $('#wrapper').show();
+    $('#filter_items').empty();
     $.each(markers, function(index, truck){
-      $('.force-overflow').append('<p class="filter_item">'+truck.title+"</p>");
-    })
+      $('#filter_items').append("<li class='filter_item'>" + truck.title + "</li>");
+    });
     $(".filter_item").on('click', function(e){
       e.preventDefault();
       var truckName = $(this).html();
