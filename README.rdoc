@@ -13,10 +13,10 @@ place it on a map.
 
 
 Gems:
-+geocoder
-+devise
-+httparty
-+json
-+faker
-+font-awesome-rails
-+newrelic_rmp
++ geocoder
++ devise
++ httparty
++ json
++ faker
++ font-awesome-rails
++ newrelic_rmp
