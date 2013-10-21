@@ -13,7 +13,8 @@ place it on a map.
 
 
 Gems:
-+ geocoder
+
+> + geocoder
 + devise
 + httparty
 + json
