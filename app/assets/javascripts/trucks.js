@@ -42,7 +42,7 @@ function geoFindMe() {
 
 // Function that requests foursquare information.
 function find_trucks(){
-  var url = "https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&near=New%20York%20NY&radius=30000&limit=50&categoryId=4bf58dd8d48988d1cb941735&intent=browse";
+  var url = "https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&ll="+coordinates+"&radius=30000&limit=50&categoryId=4bf58dd8d48988d1cb941735&intent=browse";
   $.ajax({
     url: url,
     method: 'GET',
@@ -50,15 +50,6 @@ function find_trucks(){
   }).done(function(data){
     json = data['response']['groups'][0]['items'];
     setMarkers(json);
-  });
-  var url2 = "https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&near=Brooklyn%20NY&radius=30000&limit=50&categoryId=4bf58dd8d48988d1cb941735&intent=browse";
-  $.ajax({
-    url: url2,
-    method: 'GET',
-    dataType: json
-  }).done(function(data){
-    json2 = data['response']['groups'][0]['items'];
-    setMarkers(json2);
   });
 }
 
@@ -153,7 +144,7 @@ function setMarker(truck) {
 // Function that sets multiple markers
 function setMarkers(trucks) {
   $.each(trucks, function(index, truck){
-    if(truck['name'] != "Starbucks" && truck['name'] != "Red Hook Ballfield Food Vendors" && truck['name'] != "Smorgasburg Pier 5" & truck['name'] != "Smorgasburg Williamsburg") {  
+    if(truck['name'] != "Starbucks" && truck['name'] != "Red Hook Ballfield Food Vendors" && truck['name'] != "Smorgasburg Pier 5" && truck['name'] != "Smorgasburg Williamsburg" && truck['name'] != "Bc Catering" && truck['name'] != "Tony 'The Dragon' Dragonas" && truck['name'] != "DUMBO Food Truck Lot" && truck['name'] != "Amali" ) {  
     var location = new google.maps.LatLng(truck['location']['lat'], truck['location']['lng']);
     var icon = { url: '/assets/truck.png' };
     var marker = new google.maps.Marker({
@@ -213,12 +204,14 @@ function animateMenuIn() {
   "easeInOutQuad",
   function() { $side_menu.addClass('active'); }
   );
+  $('#search').show();
 }
 
 function animateMenuOut() {
   $side_menu = $('#side-menu');
-  $side_menu.stop().animate({right: '-150px', opacity: 0.3}, animation_duration);
+  $side_menu.stop().animate({right: '-140px', opacity: 0.8}, animation_duration);
   $side_menu.removeClass('active');
+  $('#search').hide();
 }
 
 
@@ -235,13 +228,17 @@ $(function(){
   //   json = data;
   //   geoFindMe();
   // }),
-  geoFindMe();
+$('#wrapper').hide();
+$('#search').hide();
+geoFindMe();
+
 // MENU EVENT LISTENERS
 // Menu hover function
   $('#side-menu').hover(function() {
     animateMenuIn();
   }, function() {
     animateMenuOut();
+    $('#wrapper').hide();
   }),
 
 // Add all trucks function
@@ -251,23 +248,40 @@ $(function(){
   }),
 
 // Select by truck function
-  $('#filter_trucks').on('click', function(){
-    $('#filter_items').empty();
-    $.each(markers, function(index, truck){
-      $('#filter_items').append("<li class='filter_item'>" + truck.title + "</li>");
-    });
-    $(".filter_item").on('click', function(e){
-      e.preventDefault();
-      var truckName = $(this).html();
-      var url = '/trucks/ajax/' + truckName.split(' ').join('%20') + '.json';
+  // $('#filter_trucks').on('click', function(){
+  //   $('#filter_items').empty();
+  //   $('#wrapper').show();
+  //   $.each(markers, function(index, truck){
+  //     $('#filter_items').append("<li class='filter_item'>" + truck.title + "</li>");
+  //   });
+  //   $(".filter_item").on('click', function(e){
+  //     e.preventDefault();
+  //     var truckName = $(this).html();
+  //     var url = '/trucks/ajax/' + truckName.split(' ').join('%20') + '.json';
+  //     $.ajax({
+  //       url: url,
+  //       method: 'GET',
+  //       dataType: 'json'
+  //     }).done(function(data){
+  //       clearMarkers();
+  //       setMarker(data);
+  //     });
+  //   }); 
+  // });
+  $('#search').on('keyup', function(e){
+
+    var query = $(this).val().split(' ').join('%20');
+    var url = "https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&ll="+coordinates+"&radius=30000&limit=50&categoryId=4bf58dd8d48988d1cb941735&query=Truck%20"+query+"&intent=browse";
+    if(e.keyCode === 13){
       $.ajax({
         url: url,
         method: 'GET',
         dataType: 'json'
       }).done(function(data){
+        var json3 = data['response']['groups'][0]['items'];
         clearMarkers();
-        setMarker(data);
+        setMarkers(json3);
       });
-    }); 
-  });
+    }
+  })
 });

@@ -17,24 +17,8 @@ h1#logo {
     font-size: 50px;
     font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
     -webkit-box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, .3);
-    /*box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .9);*/
 }
-h1#logo:hover {
-    position: absolute;
-    background-color: rgba(37,128,162,1);
-    width: 100%;
-    bottom: 0px;
-    height: 60px;
-    padding: 10px;
-    opacity: 1;
-    z-index: 500000;
-    color: #ffffff;
-    text-align: center;
-    font-size: 40px;
-    font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
-    -webkit-box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, .3);
-    /*box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .9);*/
-}
+
 #formtitle {
   border-top: 1px solid #96d1f8;
   text-align: center;
@@ -51,7 +35,6 @@ h1#logo:hover {
    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
    box-shadow: rgba(0,0,0,1) 0 1px 0;
-   /*text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
    color: white;
    font-size: 24px;
    font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
@@ -74,7 +57,6 @@ h1#logo:hover {
    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
    box-shadow: rgba(0,0,0,1) 0 1px 0;
-   /*text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
    color: white;
    font-size: 21px;
    font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
@@ -97,7 +79,6 @@ h1#logo:hover {
    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
    box-shadow: rgba(0,0,0,1) 0 1px 0;
-   /*text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
    color: white;
    font-size: 64px;
    font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
@@ -121,7 +102,6 @@ h1#logo:hover {
    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
    box-shadow: rgba(0,0,0,1) 0 1px 0;
-   /*text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
    color: white;
    font-size: 64px;
    font-family: 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
@@ -139,27 +119,22 @@ h1#logo:hover {
     height: 780px;
     width: 100%;
     position: fixed;
-    /*background-color: red;*/
     margin: 0px;
     padding: 0px
 }
 .aside {
   background-color: rgba(0,0,0,0.8);
- /* bottom: 75px;*/
-  opacity: 0.5;
+  opacity: 0.8;
   filter: alpha(opacity=40);
   position: fixed;
-  right: -150px;
+  right: -140px;
   top: 80px;
   width: 200px;
   z-index: 1000;
   -webkit-border-radius: 3px 0px 0px 3px;
   border-radius: 3px 0px 0px 3px;
-  /*-webkit-box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, .3);
-  box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, .3);*/
+}
 
-}
-}
 .filter_items {
   cursor: pointer;
 }
@@ -181,7 +156,19 @@ background: #2580a2 bottom center no-repeat;
   font-size: 16px;
   font-weight: bold;
   width: auto;
-  /*position: fixed;*/
+  background: #333333;
+}
+#cssmenu h1, br {
+  background: #333333;
+  height: 35px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.icon-search{
+  color: #2580a2;
+  padding-left: 9px;
+  padding-top: 12px;
 }
 #cssmenu ul {
   background: #333333;
@@ -190,17 +177,15 @@ background: #2580a2 bottom center no-repeat;
   margin: 0;
   padding: 0;
 }
-#cssmenu ul:hover {
+
+#all_trucks {
   background: #333333;
   height: 35px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-#cssmenu li {
-  /*float: left;*/
-  padding: 0px;
-}
+
 #cssmenu li a {
   background: #333333 bottom right no-repeat;
   display: block;
@@ -210,80 +195,40 @@ background: #2580a2 bottom center no-repeat;
   padding: 0px 25px;
   text-align: center;
   text-decoration: none;
-}
-#cssmenu > ul > li > a {
   color: #cccccc;
 }
+
 /*FILTER TAB*/
 #cssmenu > ul > li {
   color: #cccccc;
   text-align: center;
   text-decoration: none;
   font-weight: normal;
-  /*background: #333333;*/
   height: 40px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.cssmenu > ul > li:hover {
-  color: #cccccc;
-  /*background: #2580a2 bottom center no-repeat;*/
-  text-align: center;
-  text-decoration: none;
-}
-.cssmenu > ul > li > ul:hover {
-  /*color: #cccccc;*/
-  background: #2580a2 bottom center no-repeat;
-  text-align: center;
-  text-decoration: none;
 
-}
 /*END FILTER TAB*/
 #cssmenu ul ul a {
   color: #cccccc;
 }
-.cssmenu li > a:hover,
 #cssmenu ul li:hover > a {
   background: #2580a2 bottom center no-repeat;
   color: #FFFFFF;
   text-decoration: none;
 }
-#cssmenu li ul {
-  background: #333333;
-  display: none;
-  height: auto;
-  padding: 0px;
-  margin: 0px;
-  border: 0px;
-  position: absolute;
-  width: 225px;
-  z-index: 200;
-  /*top:1em;
-  /*left:0;*/
+#cssmenu ul li:hover > a {
+  background: #2580a2 bottom center no-repeat;
+  color: #FFFFFF;
+  text-decoration: none;
 }
-#cssmenu li:hover ul {
-  display: block;
-}
-#cssmenu li li {
-  /*background: url('sub_sep.png') bottom left no-repeat;*/
-  display: block;
-  float: bottom;
-  margin: 0px;
-  padding: 8px;
-  width: 150px;
-  background: #333333;
-}
-#cssmenu li li:hover {
-  /*background: url('sub_sep.png') bottom left no-repeat;*/
-  display: block;
-  float: bottom;
-  margin: 0px;
-  padding: 8px;
-  width: 150px;
-  background: #2580a2 bottom center no-repeat;}
-#cssmenu li:hover li a {
-  background: #333333;
+
+#search{
+  width: 60%;
+  margin-left:20%; 
+  background-color: #333333;
 }
 #cssmenu li ul a {
   display: block;
@@ -296,23 +241,15 @@ background: #2580a2 bottom center no-repeat;
 }
 #cssmenu li ul a:hover,
 #cssmenu li ul li:hover > a {
-  /*background: #2580a2 url('hover_sub.png') center left no-repeat;*/
   border: 0px;
   color: #ffffff;
   text-decoration: none;
 }
-/*#cssmenu p {
-  clear: left;
-}*/
-
-
-
 
 /*ADDING SCROLLBAR*/
 
 .scrollbar
 {
-  /*margin-left: 0px;*/
   margin-right: 150px;
   float: bottom;
   height: 300px;

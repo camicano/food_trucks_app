@@ -1,25 +1,28 @@
 <div>
 	<div class="aside" id="side-menu">
 		<div id="cssmenu">
+			<h1><i class="icon-search"></i></h1>
+			<br>
 			<% if user_signed_in? %>
-				<ul>
- 					<li><%= link_to "Profile", truck_path %></li>
+			<ul>
+ 				<li><%= link_to "Profile", truck_path %></li>
     		</ul>
     		<ul>
     			<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-				</ul>
-			<% else %>
-				<ul>
- 	 				<li><%= link_to "Sign up", new_user_registration_path %></li>
- 				</ul>
- 				<ul>
- 					<li><%= link_to "Sign in", new_user_session_path %></li>
-				</ul>
-			<% end %>
-			<ul>
-				<li id="all_trucks">All Trucks</li>
 			</ul>
+			<% else %>
 			<ul>
+ 	 			<li><%= link_to "Sign up", new_user_registration_path %></li>
+ 			</ul>
+ 			<ul>
+ 				<li><%= link_to "Sign in", new_user_session_path %></li>
+			</ul>
+			<% end %>
+
+			<ul>
+				<li><p id="all_trucks">All Trucks</p></li>
+			</ul>
+<!-- 			<ul>
 				<li id="filter_trucks">Select Truck</li>	
 				<div id="wrapper">
 	    		<div class="scrollbar" id="style-2">
@@ -27,6 +30,11 @@
 						</div>
 					</div>
 				</div>
+			</ul> -->
+			<ul>
+				<li>
+					<input id="search" type="text" placeholder="search" autofocus /> 
+				</li>
 			</ul>
 		</div>
 	</div>
