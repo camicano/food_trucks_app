@@ -10,27 +10,16 @@ It is very important for us that people can acces this data from their houses, t
 [To visit the page click here](http://evening-sierra-8143.herokuapp.com)
 
 
-APIs:
+**APIs**:
 
 + Foursquare API: We used this API to get each truck's location information, as well their their name and twitter handle. [More Info](https://developer.foursquare.com)
-
 + Googlemaps: We wanted a map view so that the user can easily locate each truck in relation to them. Googlemaps is a easy and reliable map that easy to custumize. [More Info](https://developers.google.com/maps/)
 
 
-Gems:
+**Gems**:
 
-<<<<<<< HEAD
 + Devise: A gem that allow you to have login features and a lot of other featured needed to have secure access to the page.[More Info](https://github.com/plataformatec/devise)
 + Geocoder: A really easy to use gem that converts location information into coordinates.[More Info](https://github.com/alexreisner/geocoder)
 + JSON: its a gem that allows you to use the json data type in your rails apps, very important when using ajax.[More Info](https://github.com/flori/json)
 + Font-Awesome: The gem that allows you to use that great library of icons created by bluestrap.[More Info](https://github.com/bokmann/font-awesome-rails)
 
-=======
-+ geocoder
-+ devise
-+ httparty
-+ json
-+ faker
-+ font-awesome-rails
-+ newrelic_rmp
->>>>>>> 71855d39fbbd68d6642162d27a940132d67b5041
