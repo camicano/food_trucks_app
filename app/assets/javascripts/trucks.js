@@ -5,7 +5,9 @@ var json,
   trucks,
   myLatlng,
   coordinates,
-  map;
+  map,
+  infoBubble;
+
 var markers = [];
 var animation_duration = 500;
 
@@ -104,41 +106,6 @@ function initialize() {
     center: myLatlng,
     radius: 500
   });
-
-  // setMarkers();
-}
-
-//  Function that sets one marker
-function setMarker(truck) {
-  var location = new google.maps.LatLng(truck.latitude, truck.longitude);
-  var icon = {
-    url: '/assets/truck.png'
-  };
-  var marker = new google.maps.Marker({
-    position: location,
-    map: map,
-    icon: icon,
-    title: truck.name
-  });
-  markers.push(marker);
-
-// info bubble for that marker
-  var infoBubble = new InfoBubble({
-    width: 250,
-    content: '<div class="bubblediv">'+'<ul>'+truck.name+'</ul>'+'</div>',
-    position: location,
-    borderColor: '#cccccc',
-    arrowStyle: 0
-  });
-  google.maps.event.addListener(marker, 'click', function(){
-    if(!infoBubble.isOpen()){
-      infoBubble.open(map, marker);
-    }
-    else
-    {
-      infoBubble.close();
-    }
-  });
 }
 
 // Function that sets multiple markers
@@ -147,6 +114,7 @@ function setMarkers(trucks) {
     if(truck['name'] != "Starbucks" && truck['name'] != "Red Hook Ballfield Food Vendors" && truck['name'] != "Smorgasburg Pier 5" && truck['name'] != "Smorgasburg Williamsburg" && truck['name'] != "Bc Catering" && truck['name'] != "Tony 'The Dragon' Dragonas" && truck['name'] != "DUMBO Food Truck Lot" && truck['name'] != "Amali" ) {  
     var location = new google.maps.LatLng(truck['location']['lat'], truck['location']['lng']);
     var icon = { url: '/assets/truck.png' };
+    
     var marker = new google.maps.Marker({
         position: location,
         map: map,
@@ -156,31 +124,31 @@ function setMarkers(trucks) {
     
     markers.push(marker);
 
-    if(truck['contact']['twitter'] != undefined){
-      twitter = '@'+truck['contact']['twitter'];
-    }else{
-      twitter = " ";
-    }
-
-    var infoBubble = new InfoBubble({
-      width: 250,
-      content: '<div class="bubblediv">'+'<p>'+truck['name']+'</p>'+'<a href="https://www.twitter.com/'+twitter+'"><p>'+twitter+'</p></a>'+'</div>',
-      position: location,
-      borderColor: '#cccccc',
-      arrowStyle: 1
-    });
-    google.maps.event.addListener(marker, 'click', function(){
-      if(!infoBubble.isOpen()){
-        infoBubble.open(map, marker);
-      }
-      else
-      {
+// infobubble
+    google.maps.event.addListener(marker, 'click', function(){  
+      if(infoBubble){
         infoBubble.close();
       }
-    });
-  }
+
+      if(truck['contact']['twitter'] != undefined){
+        twitter = '@'+truck['contact']['twitter'];
+      }else{
+        twitter = " ";
+      }
+
+      infoBubble = new InfoBubble({
+        width: 250,
+        content: '<div class="bubblediv">'+'<p>'+truck['name']+'</p>'+'<a href="https://www.twitter.com/'+twitter+'"><p>'+twitter+'</p></a>'+'</div>',
+        position: location,
+        borderColor: '#cccccc',
+        arrowStyle: 1
+      });
+        infoBubble.open(map, marker);      
+      });
+    }
   });
 }
+
 // Sets the map on all markers in the array.
 function setAllMap(map) {
   for (var i = 0; i < markers.length; i++) {
@@ -219,15 +187,6 @@ function animateMenuOut() {
 // #####################################
 $(function(){
 
-// AJAX that reteives the initial markers for the map
-  // $.ajax({
-  //   url: '/trucks.json',
-  //   method: 'GET',
-  //   dataType: 'json'
-  // }).done(function(data){
-  //   json = data;
-  //   geoFindMe();
-  // }),
 $('#wrapper').hide();
 $('#search').hide();
 geoFindMe();
@@ -247,29 +206,7 @@ geoFindMe();
     setMarkers(json);
   }),
 
-// Select by truck function
-  // $('#filter_trucks').on('click', function(){
-  //   $('#filter_items').empty();
-  //   $('#wrapper').show();
-  //   $.each(markers, function(index, truck){
-  //     $('#filter_items').append("<li class='filter_item'>" + truck.title + "</li>");
-  //   });
-  //   $(".filter_item").on('click', function(e){
-  //     e.preventDefault();
-  //     var truckName = $(this).html();
-  //     var url = '/trucks/ajax/' + truckName.split(' ').join('%20') + '.json';
-  //     $.ajax({
-  //       url: url,
-  //       method: 'GET',
-  //       dataType: 'json'
-  //     }).done(function(data){
-  //       clearMarkers();
-  //       setMarker(data);
-  //     });
-  //   }); 
-  // });
   $('#search').on('keyup', function(e){
-
     var query = $(this).val().split(' ').join('%20');
     var url = "https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&ll="+coordinates+"&radius=30000&limit=50&categoryId=4bf58dd8d48988d1cb941735&query=Truck%20"+query+"&intent=browse";
     if(e.keyCode === 13){

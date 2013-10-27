@@ -111,8 +111,8 @@ h1#logo {
    position: absolute;
 }
 #map {
-  height: 100%;
-  width: 100%;
+  height: 90%;
+  width: 90%;
   background-color: #cccccc;
 }
 #map-canvas {
