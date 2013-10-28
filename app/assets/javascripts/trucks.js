@@ -33,7 +33,7 @@ function geoFindMe() {
   }
   function error() {
     output.html("Unable to retrieve your location");
-    myLatlng = new google.maps.LatLng(40.7, -74);
+    myLatlng = new google.maps.LatLng(40.73, -73.99);
     coordinates = "40.7, -74";
     find_trucks();
     initialize();
