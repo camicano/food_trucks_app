@@ -33,6 +33,8 @@ function geoFindMe() {
   }
   function error() {
     output.html("Unable to retrieve your location");
+    var zipcode = prompt('Please enter you zip code');
+    
     myLatlng = new google.maps.LatLng(40.73, -73.99);
     coordinates = "40.7, -74";
     find_trucks();
@@ -138,7 +140,7 @@ function setMarkers(trucks) {
 
       infoBubble = new InfoBubble({
         width: 250,
-        content: '<div class="bubblediv">'+'<p>'+truck['name']+'</p>'+'<a href="https://www.twitter.com/'+twitter+'"><p>'+twitter+'</p></a>'+'</div>',
+        content: '<div class="bubblediv">'+'<p>'+truck['name']+'</p>'+'<a href="https://www.twitter.com/'+twitter+' target="blank""><p>'+twitter+'</p></a>'+'</div>',
         position: location,
         borderColor: '#cccccc',
         arrowStyle: 1

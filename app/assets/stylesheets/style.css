@@ -2,6 +2,7 @@ body {
   background-color: #BCBFC4;
   color: #cccccc;
 }
+
 h1#logo {
     position: fixed;
     bottom: 0px;
@@ -41,6 +42,7 @@ h1#logo {
    text-decoration: none;
    vertical-align: middle;
 }
+
 #formbubble {
   border-top: 1px solid #96d1f8;
   text-align: center;
@@ -63,6 +65,7 @@ h1#logo {
    text-decoration: none;
    vertical-align: left;
 }
+
 .popdiv > p {
   border-top: 1px solid #96d1f8;
   text-align: center;
@@ -86,6 +89,7 @@ h1#logo {
    vertical-align: middle;
    z-index: 999999999;
 }
+
 #popdiv {
   border-top: 1px solid #96d1f8;
   text-align: center;
@@ -110,11 +114,13 @@ h1#logo {
    z-index: 0999999999;
    position: absolute;
 }
+
 #map {
   height: 90%;
   width: 90%;
   background-color: #cccccc;
 }
+
 #map-canvas {
     height: 780px;
     width: 100%;
@@ -122,6 +128,7 @@ h1#logo {
     margin: 0px;
     padding: 0px
 }
+
 .aside {
   background-color: rgba(0,0,0,0.8);
   opacity: 0.8;
@@ -135,17 +142,6 @@ h1#logo {
   border-radius: 3px 0px 0px 3px;
 }
 
-.filter_items {
-  cursor: pointer;
-}
-.filter_item {
-  background-color: rgba(0,0,0,0.6);
-  border-radius: 8px;
-  cursor: pointer;
-}
-.filter_item:hover {
-background: #2580a2 bottom center no-repeat;
-}
 #cssmenu {
   border: none;
   border-radius: 3px, 0px, 0px, 3px;
@@ -157,6 +153,7 @@ background: #2580a2 bottom center no-repeat;
   width: auto;
   background: #333333;
 }
+
 #cssmenu h1, br {
   background: #333333;
   height: 35px;
@@ -164,11 +161,13 @@ background: #2580a2 bottom center no-repeat;
   margin: 0;
   padding: 5px;
 }
-.icon-search{
+
+.icon-search {
   color: #2580a2;
   padding-left: 9px;
   padding-top: 12px;
 }
+
 #cssmenu ul {
   background: #333333;
   height: 35px;
@@ -185,19 +184,11 @@ background: #2580a2 bottom center no-repeat;
   padding: 6px;
 }
 
-#cssmenu li a {
-  background: #333333 bottom right no-repeat;
-  display: block;
-  font-weight: normal;
-  line-height: 35px;
-  margin: 0px;
-  padding: 0px 25px;
-  text-align: center;
-  text-decoration: none;
-  color: #cccccc;
+#all_trucks:hover{
+  cursor: pointer;
+  background-color: #2580a2;
 }
 
-/*FILTER TAB*/
 #cssmenu > ul > li {
   color: #cccccc;
   text-align: center;
@@ -208,38 +199,11 @@ background: #2580a2 bottom center no-repeat;
   margin: 0;
   padding: 0;
 }
-/*END FILTER TAB*/
 
-#cssmenu ul ul a {
-  color: #cccccc;
-}
-#cssmenu ul li:hover > a {
-  background: #2580a2 bottom center no-repeat;
-  color: #FFFFFF;
-  text-decoration: none;
-}
-#cssmenu ul li:hover > a {
-  background: #2580a2 bottom center no-repeat;
-  color: #FFFFFF;
-  text-decoration: none;
-}
 #search{
   width: 70%;
   margin-left:20%; 
   background-color: #333333;
+  color: #FFF;
 }
-#cssmenu li ul a {
-  display: block;
-  height: 35px;
-  font-size: 12px;
-  font-style: normal;
-  margin: 0px;
-  padding: 0px 10px 0px 15px;
-  text-align: left;
-}
-#cssmenu li ul a:hover,
-#cssmenu li ul li:hover > a {
-  border: 0px;
-  color: #ffffff;
-  text-decoration: none;
-}
+
