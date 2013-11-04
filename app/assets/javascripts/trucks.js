@@ -33,7 +33,6 @@ function geoFindMe() {
   }
   function error() {
     output.html("Unable to retrieve your location");
-    var zipcode = prompt('Please enter you zip code');
     
     myLatlng = new google.maps.LatLng(40.73, -73.99);
     coordinates = "40.7, -74";
