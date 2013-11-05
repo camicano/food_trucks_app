@@ -139,7 +139,7 @@ function setMarkers(trucks) {
 
       infoBubble = new InfoBubble({
         width: 250,
-        content: '<div class="bubblediv">'+'<p>'+truck['name']+'</p>'+'<a href="https://www.twitter.com/'+twitter+' target="blank""><p>'+twitter+'</p></a>'+'</div>',
+        content: '<div class="bubblediv">'+'<p>'+truck['name']+'</p>'+'<a href="https://www.twitter.com/'+twitter+'" target="blank"><p>'+twitter+'</p></a>'+'</div>',
         position: location,
         borderColor: '#cccccc',
         arrowStyle: 1
