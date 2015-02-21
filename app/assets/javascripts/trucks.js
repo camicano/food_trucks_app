@@ -45,13 +45,13 @@ function geoFindMe() {
 
 // Function that requests foursquare information.
 function find_trucks(){
-  var url = "https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&ll="+coordinates+"&radius=30000&limit=50&categoryId=4bf58dd8d48988d1cb941735&intent=browse";
+  var url = "https://api.foursquare.com/v2/venues/search?client_id=RJSWD24SW0YBT3ARBT3UES4HFRZCE5XZR5HPN0MIC11KJXDX&client_secret=AARRX54N1DZKWZ5SPOJ3QPCDUJD2XN4TT0BJAIRUVI51DUSS&ll="+coordinates+"&radius=30000&limit=50&categoryId=4bf58dd8d48988d1cb941735&intent=browse&v=20131012&m=foursquare";
   $.ajax({
     url: url,
     method: 'GET',
     dataType: json
   }).done(function(data){
-    json = data['response']['groups'][0]['items'];
+    json = data['response']['venues'];
     setMarkers(json);
   });
 }
